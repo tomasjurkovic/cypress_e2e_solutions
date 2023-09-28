@@ -18,6 +18,10 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     cy.get('[type="submit"]').click({ force: true });
   });
 
+  // it.only('only this test would ru', () => {
+  //   // some random test which would be only run if it is outcommented
+  // });
+
   it("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
     // negative scenario code
     cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
