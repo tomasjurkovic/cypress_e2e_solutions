@@ -16,6 +16,10 @@ describe("Test Contact Us page form viac webdriverUni", () => {
       "This is the comments section, so I put comment there."
     );
     cy.get('[type="submit"]').click({ force: true });
+    cy.get("#contact_reply h1").should(
+      "have.text",
+      "Thank You for your Message!"
+    );
   });
 
   // it.only('only this test would ru', () => {
@@ -31,5 +35,9 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     cy.get('[name="email"]').type("tomas@sk");
     // not included comment, but all fields are required
     cy.get('[type="submit"]').click({ force: true });
+    cy.get("body").should(
+      "have.text",
+      "\n\n\n Error: all fields are required\n Error: Invalid email address\n\n\n"
+    );
   });
 });
