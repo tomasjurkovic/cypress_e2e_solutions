@@ -12,6 +12,7 @@ describe("Test Contact Us page form via Automation test store", () => {
     cy.get('a[href$="contact"]').click();
     cy.get("#ContactUsFrm_first_name").type("Tomas");
     cy.get("#ContactUsFrm_email").type("tomas@jurkovic.sk");
+    cy.get("#ContactUsFrm_email").should("have.attr", "name", "email");
     cy.get("#ContactUsFrm_enquiry").type("Just some text message");
 
     // xpath using unique ID:
@@ -20,5 +21,11 @@ describe("Test Contact Us page form via Automation test store", () => {
     // cy.get(".btn").contains("Submit").click();
     // alternative verion>
     cy.get('button[title = "Submit"]').click();
+
+    // first assertion to verify if text message is correct:
+    cy.get(".contentpanel p:nth-child(3)").should(
+      "have.text",
+      "Your enquiry has been successfully sent to the store owner!"
+    );
   });
 });
