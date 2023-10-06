@@ -1,13 +1,17 @@
 /// <reference types="Cypress"/>
 
 describe("Test Contact Us page form viac webdriverUni", () => {
-  it("Should be able to submit a successful submission via contact us form", () => {
+  it.only("Should be able to submit a successful submission via contact us form", () => {
     // possitive scenario code
     // cy.visit("https://webdriveruniversity.com/");
     // cy.get("#contact-us").click({ force: true });
 
     // NOW JUST FAKE ACCESS THE OPENED TAB:
     cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
+    // cy dokument, title and url examples:
+    cy.document().should("have.property", "charset").and("eq", "UTF-8");
+    cy.title().should("include", "WebDriver | Contact Us");
+    cy.url().should("include", "/Contact-Us/contactus.html");
 
     cy.get('[name="first_name"]').type("Tomas");
     cy.get('[name="last_name"]').type("Jurkovic");
@@ -26,7 +30,7 @@ describe("Test Contact Us page form viac webdriverUni", () => {
   //   // some random test which would be only run if it is outcommented
   // });
 
-  it.only("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
+  it("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
     // negative scenario code
     cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
     cy.get('[name="first_name"]').type("Tomas");
