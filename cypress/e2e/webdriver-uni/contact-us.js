@@ -26,7 +26,7 @@ describe("Test Contact Us page form viac webdriverUni", () => {
   //   // some random test which would be only run if it is outcommented
   // });
 
-  it("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
+  it.only("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
     // negative scenario code
     cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
     cy.get('[name="first_name"]').type("Tomas");
@@ -35,6 +35,7 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     cy.get('[name="email"]').type("tomas@sk");
     // not included comment, but all fields are required
     cy.get('[type="submit"]').click({ force: true });
+    cy.get("body").contains("Error: all fields are required");
     cy.get("body").should(
       "have.text",
       "\n\n\n Error: all fields are required\n Error: Invalid email address\n\n\n"
