@@ -1,7 +1,7 @@
 /// <reference types="Cypress"/>
 
 describe("Test Contact Us page form viac webdriverUni", () => {
-  it.only("Should be able to submit a successful submission via contact us form", () => {
+  it("Should be able to submit a successful submission via contact us form", () => {
     // possitive scenario code
     // cy.visit("https://webdriveruniversity.com/");
     // cy.get("#contact-us").click({ force: true });
@@ -24,6 +24,9 @@ describe("Test Contact Us page form viac webdriverUni", () => {
       "have.text",
       "Thank You for your Message!"
     );
+
+    console.log("Test finished successfully");
+    cy.log("This is equivalent of above, actually visible in Cypress console");
   });
 
   // it.only('only this test would ru', () => {
