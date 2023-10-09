@@ -42,7 +42,10 @@ describe("Verifying variables, cypress commands and jquerry commands", () => {
     // and check that it contains 'First name' text label
 
     // Using JQuerry:
-
+    cy.contains("#ContactUsFrm", "Contact Us Form").then((text) => {
+      const firstNameText = text.find("#field_11").text();
+      expect(firstNameText).to.contain("First name");
+    });
     // Embedded commands (closures):
   });
 });
