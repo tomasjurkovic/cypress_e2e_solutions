@@ -9,7 +9,11 @@ describe("Test Contact Us page form via Automation test store", () => {
     //   'a[href="https://automationteststore.com/index.php?rt=content/contact"]'
     // ).click();
     // optimaized:
-    cy.get('a[href$="contact"]').click();
+    cy.get('a[href$="contact"]')
+      .click()
+      .then(function (linkText) {
+        console.log(`Headline of this link is following: ${linkText.text()}`);
+      });
     cy.get("#ContactUsFrm_first_name").type("Tomas");
     cy.get("#ContactUsFrm_email").type("tomas@jurkovic.sk");
     cy.get("#ContactUsFrm_email").should("have.attr", "name", "email");
