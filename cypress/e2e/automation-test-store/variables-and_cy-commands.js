@@ -30,7 +30,7 @@ describe("Verifying variables, cypress commands and jquerry commands", () => {
       });
   });
 
-  it.only("Validate correct text names", () => {
+  it("Validate correct text names", () => {
     cy.visit("https://automationteststore.com/index.php?rt=content/contact");
 
     // Using cypress commans and chaining:
@@ -51,6 +51,24 @@ describe("Verifying variables, cypress commands and jquerry commands", () => {
         cy.log(fnText.text());
         cy.log(fnText);
       });
+    });
+  });
+
+  it.only("Iterating over element", () => {
+    cy.visit("https://automationteststore.com/");
+    cy.get("a[href*='product/category&path=']").contains("Hair Care").click();
+    cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
+      cy.log(`Index: ${index} : ${$el.text()}`);
+    });
+  });
+
+  it.only("Iterating over element", () => {
+    cy.visit("https://automationteststore.com/");
+    cy.get("a[href*='product/category&path=']").contains("Hair Care").click();
+    cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
+      if ($el.text() === "Eau Parfumee au The Vert Shampoo") {
+        cy.wrap($el).click();
+      }
     });
   });
 });
