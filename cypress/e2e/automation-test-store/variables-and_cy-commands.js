@@ -54,7 +54,7 @@ describe("Verifying variables, cypress commands and jquerry commands", () => {
     });
   });
 
-  it.only("Iterating over element", () => {
+  it("Iterating over element", () => {
     cy.visit("https://automationteststore.com/");
     cy.get("a[href*='product/category&path=']").contains("Hair Care").click();
     cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
@@ -62,7 +62,7 @@ describe("Verifying variables, cypress commands and jquerry commands", () => {
     });
   });
 
-  it.only("Iterating over element", () => {
+  it("Iterating over element", () => {
     cy.visit("https://automationteststore.com/");
     cy.get("a[href*='product/category&path=']").contains("Hair Care").click();
     cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
