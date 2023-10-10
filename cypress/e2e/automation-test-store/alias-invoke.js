@@ -54,4 +54,5 @@ describe("Aliases and Invoke test suite", () => {
         expect(totalPrice).to.equal(660.5);
       });
   });
+
 });
