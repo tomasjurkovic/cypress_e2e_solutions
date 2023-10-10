@@ -1,13 +1,27 @@
 /// <reference types="Cypress"/>
 
 describe("Test Contact Us page form viac webdriverUni", () => {
+  function outsmartNewTabOpening(element) {
+    // mine solution:
+    // cy.get(element).as("element");
+    // cy.get("@element").then(($el) => {
+    //   $el.removeAttr("target");
+    // });
+
+    // cy.get("@element").click({ force: true });
+
+    // easier with cypress invoke in one line:
+    cy.get(element).invoke("removeAttr", "target").click({ force: true });
+  }
+
   it("Should be able to submit a successful submission via contact us form", () => {
     // possitive scenario code
-    // cy.visit("https://webdriveruniversity.com/");
-    // cy.get("#contact-us").click({ force: true });
+    cy.visit("https://webdriveruniversity.com/");
 
+    // using function for repeating step:
+    outsmartNewTabOpening("#contact-us");
     // NOW JUST FAKE ACCESS THE OPENED TAB:
-    cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
+    // cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
     // cy dokument, title and url examples:
     cy.document().should("have.property", "charset").and("eq", "UTF-8");
     cy.title().should("include", "WebDriver | Contact Us");
@@ -35,7 +49,9 @@ describe("Test Contact Us page form viac webdriverUni", () => {
 
   it("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
     // negative scenario code
-    cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
+    cy.visit("https://webdriveruniversity.com/");
+    outsmartNewTabOpening("#contact-us");
+
     cy.get('[name="first_name"]').type("Tomas");
     cy.get('[name="last_name"]').type("Jurkovic");
     // invalid email address:
