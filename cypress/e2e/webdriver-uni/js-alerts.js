@@ -38,4 +38,24 @@ describe("Handling javaScript alerts", () => {
       .invoke("text")
       .should("eq", "You pressed OK!");
   });
+
+  it.only("Validate js confirm alert using stub", () => {
+    cy.visit("https://webdriveruniversity.com/");
+    outsmartNewTabOpening("#popup-alerts");
+
+    const stub = cy.stub();
+    cy.on("window:confirm", stub);
+    cy.get("#button4")
+      .click()
+      .then(() => {
+        expect(stub.getCall(0)).to.be.calledWith("Press a button!");
+        // expect(str).to.equal("Press a button!");
+      })
+      .then(() => {
+        return true; // actually not needed, because false is not doing anything
+      });
+    cy.get("#confirm-alert-text")
+      .invoke("text")
+      .should("eq", "You pressed OK!");
+  });
 });
