@@ -14,4 +14,13 @@ describe("Cypress web security", () => {
       .invoke("text")
       .should("contain", "Welcome to the Automation Test Store!");
   });
+
+  it("Different origins", () => {
+    cy.origin("automationteststore.com", () => {
+      cy.visit("/");
+    });
+    cy.origin("webdriveruniversity.com", () => {
+      cy.visit("/");
+    });
+  });
 });
