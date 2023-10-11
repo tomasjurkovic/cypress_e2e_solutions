@@ -1,4 +1,4 @@
-const { outsmartNewTabOpening } = require("./contact-us");
+const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling javaScript alerts", () => {
   it("Basic alert handling", () => {
@@ -39,7 +39,7 @@ describe("Handling javaScript alerts", () => {
       .should("eq", "You pressed OK!");
   });
 
-  it.only("Validate js confirm alert using stub", () => {
+  it("Validate js confirm alert using stub", () => {
     cy.visit("https://webdriveruniversity.com/");
     outsmartNewTabOpening("#popup-alerts");
 
