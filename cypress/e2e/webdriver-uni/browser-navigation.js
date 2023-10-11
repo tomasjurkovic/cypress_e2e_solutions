@@ -1,6 +1,6 @@
 /// <reference types="Cypress"/>
 
-const { outsmartNewTabOpening } = require("./contact-us");
+const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Validate webdriveruni homepage links", () => {
   it("Confirm links redirect to the correct pages", () => {

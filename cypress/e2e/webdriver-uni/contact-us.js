@@ -1,17 +1,6 @@
 /// <reference types="Cypress"/>
 
-export function outsmartNewTabOpening(element) {
-  // mine solution:
-  // cy.get(element).as("element");
-  // cy.get("@element").then(($el) => {
-  //   $el.removeAttr("target");
-  // });
-
-  // cy.get("@element").click({ force: true });
-
-  // easier with cypress invoke in one line:
-  cy.get(element).invoke("removeAttr", "target").click({ force: true });
-}
+const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Test Contact Us page form viac webdriverUni", () => {
   it("Should be able to submit a successful submission via contact us form", () => {
