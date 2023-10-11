@@ -23,3 +23,16 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+export function outsmartNewTabOpening(element) {
+  // mine solution:
+  // cy.get(element).as("element");
+  // cy.get("@element").then(($el) => {
+  //   $el.removeAttr("target");
+  // });
+
+  // cy.get("@element").click({ force: true });
+
+  // easier with cypress invoke in one line:
+  cy.get(element).invoke("removeAttr", "target").click({ force: true });
+}
