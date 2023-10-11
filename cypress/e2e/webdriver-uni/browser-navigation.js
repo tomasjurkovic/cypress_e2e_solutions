@@ -1,9 +1,11 @@
 /// <reference types="Cypress"/>
 
+const { outsmartNewTabOpening } = require("./contact-us");
+
 describe("Validate webdriveruni homepage links", () => {
   it("Confirm links redirect to the correct pages", () => {
     cy.visit("https://webdriveruniversity.com/");
-    cy.get("#contact-us").invoke("removeAttr", "target").click({ force: true });
+    outsmartNewTabOpening("#contact-us");
     cy.url().should("include", "/Contact-Us/contactus.html");
 
     cy.go("back");
@@ -17,10 +19,15 @@ describe("Validate webdriveruni homepage links", () => {
     // cy.reload(true); // without using cache
     cy.go("back");
 
-    cy.get("#login-portal")
-      .invoke("removeAttr", "target")
-      .click({ force: true });
+    outsmartNewTabOpening("#login-portal");
     cy.url().should("include", "/Login-Portal/index.html");
+    cy.go("back");
+    cy.url().should("eq", "https://webdriveruniversity.com/");
+
+    // challenge:
+    // click on to do list, verify if correct URL, go back and verify if user is on homepage
+    outsmartNewTabOpening("#to-do-list");
+    cy.url().should("include", "/To-Do-List");
     cy.go("back");
     cy.url().should("eq", "https://webdriveruniversity.com/");
   });
