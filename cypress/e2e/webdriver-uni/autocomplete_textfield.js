@@ -9,15 +9,30 @@ describe("Handling autocomplete dropdown list", () => {
     outsmartNewTabOpening("#autocomplete-textfield");
     cy.get("#myInput").type("A");
 
-    cy.get("#myInputautocomplete-list > *").each(($el, index, $list) => {
-      const product = $el.text();
-      const productToSelect = "Avacado";
-      if (product === productToSelect) {
-        $el.click();
-        cy.get("#submit-button").click();
-        cy.url().should("include", productToSelect);
-      }
-    });
-    // cy.get("#myInputautocomplete-list").find("input[value='Almond']").click();
+    cy.get("#myInputautocomplete-list > *")
+      .each(($el, index, $list) => {
+        const product = $el.text();
+        const productToSelect = "Avacado";
+        if (product === productToSelect) {
+          $el.click();
+          cy.get("#submit-button").click();
+          cy.url().should("include", productToSelect);
+        }
+        // challenge to extend test and add check for grapes:
+      })
+      .then(() => {
+        cy.get("#myInput").type("G");
+
+        cy.get("#myInputautocomplete-list > *").each(($el, index, $list) => {
+          const product = $el.text();
+          const productToSelect = "Grapes";
+          if (product === productToSelect) {
+            $el.click();
+            cy.get("#submit-button").click();
+            cy.url().should("include", productToSelect);
+          }
+          // challenge to extend test and add check for grapes:
+        });
+      });
   });
 });
