@@ -14,7 +14,8 @@ describe("Handling autocomplete dropdown list", () => {
         const product = $el.text();
         const productToSelect = "Avacado";
         if (product === productToSelect) {
-          $el.click();
+          //   $el.click();
+          $el.trigger("click");
           cy.get("#submit-button").click();
           cy.url().should("include", productToSelect);
         }
@@ -27,7 +28,10 @@ describe("Handling autocomplete dropdown list", () => {
           const product = $el.text();
           const productToSelect = "Grapes";
           if (product === productToSelect) {
-            $el.click();
+            // $el.click();
+            // using instead of the above this:
+            $el.trigger("click");
+
             cy.get("#submit-button").click();
             cy.url().should("include", productToSelect);
           }
