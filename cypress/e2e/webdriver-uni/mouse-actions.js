@@ -44,4 +44,25 @@ describe("Handling mouse action", () => {
       .should("have.css", "background-color")
       .and("eq", "rgb(147, 203, 90)");
   });
+
+  it.only("Validate holding a left mouse clickcbutton on a given element", () => {
+    cy.visit("https://webdriveruniversity.com/");
+    // using function for repeating step:t
+    outsmartNewTabOpening("#actions");
+
+    // assertion before action: black color and differen text
+    cy.get("#click-box")
+      .should("have.css", "background-color")
+      .and("eq", "rgb(0, 0, 0)");
+    cy.get("#click-box").invoke("text").should("include", "Click and Hold!");
+    cy.get("#click-box")
+      .trigger("mousedown", { which: 1 })
+      .then(($element) => {
+        // validations for color and tex)t
+        expect($element).to.have.text(
+          "Well done! keep holding that click now....."
+        );
+        expect($element).to.have.css("background-color", "rgb(0, 255, 0)");
+      });
+  });
 });
