@@ -45,7 +45,7 @@ describe("Handling mouse action", () => {
       .and("eq", "rgb(147, 203, 90)");
   });
 
-  it.only("Validate holding a left mouse clickcbutton on a given element", () => {
+  it("Validate holding a left mouse clickcbutton on a given element", () => {
     cy.visit("https://webdriveruniversity.com/");
     // using function for repeating step:t
     outsmartNewTabOpening("#actions");
@@ -64,5 +64,26 @@ describe("Handling mouse action", () => {
         );
         expect($element).to.have.css("background-color", "rgb(0, 255, 0)");
       });
+  });
+
+  it.only("It should be able to handle and verify hovering over element", () => {
+    cy.visit("https://webdriveruniversity.com/");
+
+    // using function for repeating step:t
+    outsmartNewTabOpening("#actions");
+
+    cy.get(".dropdown").find(".dropbtn").first().as("firstDropdown");
+    cy.get("@firstDropdown")
+      .trigger("mousedown", { which: 1 })
+      .trigger("mouseover", { force: true })
+      .click();
+
+    cy.get(".dropdown-content").invoke("show");
+    cy.get(".hover > .dropdown-content > .list-alert").click();
+    // Assert if correct message is displayed in alert window
+    cy.on("window:alert", (str) => {
+      // here it could be window:alert as well, but it has no chance to be false
+      expect(str).to.equal("Well done you clicked on the link!");
+    });
   });
 });
