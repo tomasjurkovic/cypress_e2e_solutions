@@ -31,6 +31,10 @@ describe("Handling dropdowns", () => {
 
     cy.get("@secondDropdown").select("testng");
     cy.get("@secondDropdown").should("have.value", "testng");
+
+    // chalenge: select by text
+    cy.get("@secondDropdown").select("JUnit");
+    cy.get("@secondDropdown").should("have.value", "junit");
   });
 
   it("Handle third dropdown", () => {
@@ -47,5 +51,26 @@ describe("Handling dropdowns", () => {
 
     cy.get("@thirdDropdown").select("javascript");
     cy.get("@thirdDropdown").should("have.value", "javascript");
+  });
+
+  it.only("Validate fourth dropdown has some disabled option", () => {
+    // possitive scenario code
+    cy.visit("https://webdriveruniversity.com/");
+
+    // using function for repeating step:
+    outsmartNewTabOpening("#dropdown-checkboxes-radiobuttons");
+
+    cy.get("#fruit-selects").as("fruitsDropdown");
+
+    // check default value:
+    cy.get("@fruitsDropdown").should("have.value", "grape");
+
+    // check if Orange value is disable
+    cy.get("@fruitsDropdown")
+      .find('option[value="orange"]')
+      .should("be.disabled");
+
+    // check if Pear value is enabled:
+    cy.get("@fruitsDropdown").find('option[value="pear"]').should("be.enabled");
   });
 });
