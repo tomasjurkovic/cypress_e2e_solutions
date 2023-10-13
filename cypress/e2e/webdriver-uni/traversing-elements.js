@@ -153,7 +153,7 @@ describe("Traversing DOM elements in Cypress", () => {
       .and("include", "Technology");
   });
 
-  it.only("prevUntil() to get all previous sibling DOM elements within elements until other element", () => {
+  it("prevUntil() to get all previous sibling DOM elements within elements until other element", () => {
     // challenge: check if list items contains following fruits:
     cy.get("#veggie")
       .prevUntil("#fruits")
@@ -166,5 +166,15 @@ describe("Traversing DOM elements in Cypress", () => {
       .and("contain", "Figs");
   });
 
-  it("siblings() To get all sibling DOM elements of elements", () => {});
+  it("siblings() To get all sibling DOM elements of elements", () => {
+    cy.get(".traversal-button-other-states .active")
+      .siblings()
+      .should("have.length", 3);
+    // verified it had 3 siblings
+    cy.get(".traversal-button-other-states .active")
+      .siblings()
+      .invoke("text")
+      .should("include", "Button-3");
+    // verified that Button-3 is included as a sibling of Button-1 element
+  });
 });
