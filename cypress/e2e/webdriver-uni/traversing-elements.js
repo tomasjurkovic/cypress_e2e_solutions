@@ -21,12 +21,27 @@ describe("Traversing DOM elements in Cypress", () => {
     // all three links have this specific class, so it works for all of them
   });
 
-  it.only("closest() to validate the closest ancestor DOM element", () => {
+  it("closest() to validate the closest ancestor DOM element", () => {
     cy.get(".traversal-badge").closest("ul").should("have.class", "list-group");
     // it is good example of using closest when traversal up through document
   });
 
-  it("eq() to retrieve a specific element based on index", () => {});
+  it.only("eq() to retrieve a specific element based on index", () => {
+    // example of using eq() command and assert if third item in the list is 'Milk'
+    cy.get(".traversal-drinks-list")
+      .find("li")
+      .eq(2)
+      .invoke("text")
+      .should("eq", "Milk");
+
+    // same with fourth 'esspresso', numbers are index based:
+    cy.get(".traversal-drinks-list > *")
+      .eq(3)
+      .invoke("text")
+      .should("eq", "Espresso");
+
+    // this is without 'find('li') because there are only 5 li elements
+  });
 
   it("filter() to retrieve DOM elements that match a specific selector", () => {});
 
