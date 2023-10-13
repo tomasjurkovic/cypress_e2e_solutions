@@ -125,14 +125,17 @@ describe("Traversing DOM elements in Cypress", () => {
       .and("not.have.class", "disabled");
   });
 
-  it.only("parent() To get parent DOM element of elements", () => {
+  it("parent() To get parent DOM element of elements", () => {
     cy.get(".traversal-mark")
       .parent()
       .should("contain", "Lorem ipsum dolor sit amet")
       .and("contain", "quisque sagittis purus sit amet volutpat consequat.");
   });
 
-  it("parents() to get parents DOM element of elements", () => {});
+  it.only("parents() to get parents DOM element of elements", () => {
+    cy.get(".traversal-cite").parents().should("match", "blockquote");
+    // assertion that blockquote is located as one of the paremnts of cite element
+  });
 
   it("prev() to get the previous sibling DOM element within elements", () => {});
 
