@@ -78,7 +78,7 @@ describe("Traversing DOM elements in Cypress", () => {
       .and("include", "Otto");
   });
 
-  it.only("last() to retrieve the last DOM element within elements", () => {
+  it("last() to retrieve the last DOM element within elements", () => {
     cy.get(".traversal-table tbody > tr > td")
       .last()
       .invoke("text")
@@ -95,7 +95,16 @@ describe("Traversing DOM elements in Cypress", () => {
       .and("include", "Larry");
   });
 
-  it("nextAll() to get all of the next sibling DOM elements within elements", () => {});
+  it.only("nextAll() to get all of the next sibling DOM elements within elements", () => {
+    // we can use nextAll() for verifying remaining siblings of an element that are located under the elemnt in the DOM tree
+    // challenge is to assert number of elements located under the 'Tea' list item>
+    // it has its own ID, so it's easy to locate
+    cy.get("#tea").nextAll().should("have.length", 3);
+    // it should include espresso in the list
+    cy.get("#tea").nextAll().invoke("text").should("include", "Espresso");
+    // next sibling element should be 'Milk'
+    cy.get("#tea").next().should("have.text", "Milk");
+  });
 
   it("nextUntil() to get all of the next sibling DOM elements within elements until another element", () => {});
 
