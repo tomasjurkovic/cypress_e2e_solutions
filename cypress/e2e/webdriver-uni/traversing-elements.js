@@ -116,7 +116,7 @@ describe("Traversing DOM elements in Cypress", () => {
     // not including provided element, that's why only 1 is returnd in this case
   });
 
-  it.only("not() to remove DOM element(s) from the set of elements", () => {
+  it("not() to remove DOM element(s) from the set of elements", () => {
     // using not to lacate all buttons that are not disabled:
     cy.get(".traversal-button-states")
       .find(".btn")
@@ -125,7 +125,12 @@ describe("Traversing DOM elements in Cypress", () => {
       .and("not.have.class", "disabled");
   });
 
-  it("parent() To get parent DOM element of elements", () => {});
+  it.only("parent() To get parent DOM element of elements", () => {
+    cy.get(".traversal-mark")
+      .parent()
+      .should("contain", "Lorem ipsum dolor sit amet")
+      .and("contain", "quisque sagittis purus sit amet volutpat consequat.");
+  });
 
   it("parents() to get parents DOM element of elements", () => {});
 
