@@ -137,12 +137,21 @@ describe("Traversing DOM elements in Cypress", () => {
     // assertion that blockquote is located as one of the paremnts of cite element
   });
 
-  it.only("prev() to get the previous sibling DOM element within elements", () => {
+  it("prev() to get the previous sibling DOM element within elements", () => {
     // challenge: check if previous list item in UL is Espresso if actual is Sugar:
     cy.get("#sugar").prev().should("contain", "Espresso");
   });
 
-  it("prevAll() to get all previous sibling DOM elements within elements", () => {});
+  it.only("prevAll() to get all previous sibling DOM elements within elements", () => {
+    // challenge: assert types of jobs and veridy number of previous jobs if sales is selected
+    cy.get(".sales").prevAll().should("have.length", 2);
+    // there are 2, because actual element it does not count
+    cy.get(".sales")
+      .prevAll()
+      .invoke("text")
+      .should("include", "Finance")
+      .and("include", "Technology");
+  });
 
   it("prevUntil() to get all previous sibling DOM elements within elements until other element", () => {});
 
