@@ -24,7 +24,7 @@ describe("Handle data table via WebdriverUni", () => {
       });
   });
 
-  it.only("Calculate and assert the total age of all users suggested solution", () => {
+  it("Calculate and assert the total age of all users suggested solution", () => {
     let userDetails = [];
     let numOfAges = 0;
     cy.get("#thumbnail-1 td")
@@ -40,5 +40,35 @@ describe("Handle data table via WebdriverUni", () => {
         }
         expect(numOfAges).to.eq(322);
       });
+  });
+
+  it("Validate 'Woods' age is correct mine", () => {
+    cy.get("#thumbnail-1 tr td:nth-child(2)").each(($el, index, $list) => {
+      const lastName = "Woods";
+      const age = "80";
+      const text = $el.text();
+      if (text.includes(lastName)) {
+        cy.get("#thumbnail-1 tr td:nth-child(2)")
+          .eq(index)
+          .next()
+          .invoke("text")
+          .should("eq", age);
+      }
+    });
+  });
+
+  it.only("Calculate and assert the age of a given user based on last name by author", () => {
+    cy.get("#thumbnail-1 tr td:nth-child(2)").each(($el, index, $list) => {
+      const text = $el.text();
+      if (text.includes("Woods")) {
+        cy.get("#thumbnail-1 tr td:nth-child(2)")
+          .eq(index)
+          .next()
+          .then(function (age) {
+            const userAge = age.text();
+            expect(userAge).to.equal("80");
+          });
+      }
+    });
   });
 });
