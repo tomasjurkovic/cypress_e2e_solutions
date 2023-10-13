@@ -106,7 +106,7 @@ describe("Traversing DOM elements in Cypress", () => {
     cy.get("#tea").next().should("have.text", "Milk");
   });
 
-  it.only("nextUntil() to get all of the next sibling DOM elements within elements until another element", () => {
+  it("nextUntil() to get all of the next sibling DOM elements within elements until another element", () => {
     cy.get("#coffee")
       .nextUntil("#milk")
       .should("have.length", 1)
@@ -116,7 +116,14 @@ describe("Traversing DOM elements in Cypress", () => {
     // not including provided element, that's why only 1 is returnd in this case
   });
 
-  it("not() to remove DOM element(s) from the set of elements", () => {});
+  it.only("not() to remove DOM element(s) from the set of elements", () => {
+    // using not to lacate all buttons that are not disabled:
+    cy.get(".traversal-button-states")
+      .find(".btn")
+      .not(".disabled")
+      .should("have.length", 3)
+      .and("not.have.class", "disabled");
+  });
 
   it("parent() To get parent DOM element of elements", () => {});
 
