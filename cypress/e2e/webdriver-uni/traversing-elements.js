@@ -43,7 +43,7 @@ describe("Traversing DOM elements in Cypress", () => {
     // this is without 'find('li') because there are only 5 li elements
   });
 
-  it.only("filter() to retrieve DOM elements that match a specific selector", () => {
+  it("filter() to retrieve DOM elements that match a specific selector", () => {
     cy.get(".btn-group-toggle > *")
       .filter(".active")
       .should("have.class", "active")
@@ -55,7 +55,12 @@ describe("Traversing DOM elements in Cypress", () => {
     // only one btn is selected based on this filter
   });
 
-  it("find() to retrieve DOM elements of a given selector", () => {});
+  it.only("find() to retrieve DOM elements of a given selector", () => {
+    cy.get(".traversal-pagination").find("a").should("have.length", 7);
+
+    // find can get us multiple elements which are located inside the DOM tree under previously selected element
+    // actual test just checks if there 7 a links elements in pagination
+  });
 
   it("first() to retrieve the first DOM element within elements ", () => {});
 
