@@ -132,12 +132,15 @@ describe("Traversing DOM elements in Cypress", () => {
       .and("contain", "quisque sagittis purus sit amet volutpat consequat.");
   });
 
-  it.only("parents() to get parents DOM element of elements", () => {
+  it("parents() to get parents DOM element of elements", () => {
     cy.get(".traversal-cite").parents().should("match", "blockquote");
     // assertion that blockquote is located as one of the paremnts of cite element
   });
 
-  it("prev() to get the previous sibling DOM element within elements", () => {});
+  it.only("prev() to get the previous sibling DOM element within elements", () => {
+    // challenge: check if previous list item in UL is Espresso if actual is Sugar:
+    cy.get("#sugar").prev().should("contain", "Espresso");
+  });
 
   it("prevAll() to get all previous sibling DOM elements within elements", () => {});
 
