@@ -8,7 +8,18 @@ describe("Traversing DOM elements in Cypress", () => {
     outsmartNewTabOpening("#data-table");
   });
 
-  it("children() to get the children of DOM elements", () => {});
+  it.only("children() to get the children of DOM elements", () => {
+    cy.get(".traversal-breadcrumb")
+      .children(".active")
+      .should("contain", "Contact Us");
+    // this should verify that contact us link has a .active class
+
+    cy.get(".traversal-breadcrumb")
+      .children(".breadcrumb-item")
+      .should("contain", "About Us");
+    // this is just mine addition which works fine.
+    // all three links have this specific class, so it works for all of them
+  });
 
   it("closest() to validate the closest ancestor DOM element", () => {});
 
