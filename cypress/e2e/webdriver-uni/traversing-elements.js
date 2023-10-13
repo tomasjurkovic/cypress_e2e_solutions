@@ -62,7 +62,7 @@ describe("Traversing DOM elements in Cypress", () => {
     // actual test just checks if there 7 a links elements in pagination
   });
 
-  it.only("first() to retrieve the first DOM element within elements ", () => {
+  it("first() to retrieve the first DOM element within elements ", () => {
     cy.get(".traversal-table tbody > tr > td")
       .first()
       .invoke("text")
@@ -78,7 +78,22 @@ describe("Traversing DOM elements in Cypress", () => {
       .and("include", "Otto");
   });
 
-  it("last() to retrieve the last DOM element within elements", () => {});
+  it.only("last() to retrieve the last DOM element within elements", () => {
+    cy.get(".traversal-table tbody > tr > td")
+      .last()
+      .invoke("text")
+      .should("eq", "Scott");
+    // .traversal-table tbody > tr > td has 6 matches in 3 table rows
+    // last() only returns the last of 6 elements
+    // which is Scott
+    // it is just opposite of first()
+
+    cy.get(".traversal-table tbody > tr")
+      .last()
+      .invoke("text")
+      .should("include", "Scott")
+      .and("include", "Larry");
+  });
 
   it("nextAll() to get all of the next sibling DOM elements within elements", () => {});
 
