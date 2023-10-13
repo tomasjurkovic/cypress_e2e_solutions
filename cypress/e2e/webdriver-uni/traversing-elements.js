@@ -8,7 +8,7 @@ describe("Traversing DOM elements in Cypress", () => {
     outsmartNewTabOpening("#data-table");
   });
 
-  it.only("children() to get the children of DOM elements", () => {
+  it("children() to get the children of DOM elements", () => {
     cy.get(".traversal-breadcrumb")
       .children(".active")
       .should("contain", "Contact Us");
@@ -21,7 +21,10 @@ describe("Traversing DOM elements in Cypress", () => {
     // all three links have this specific class, so it works for all of them
   });
 
-  it("closest() to validate the closest ancestor DOM element", () => {});
+  it.only("closest() to validate the closest ancestor DOM element", () => {
+    cy.get(".traversal-badge").closest("ul").should("have.class", "list-group");
+    // it is good example of using closest when traversal up through document
+  });
 
   it("eq() to retrieve a specific element based on index", () => {});
 
