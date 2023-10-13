@@ -142,7 +142,7 @@ describe("Traversing DOM elements in Cypress", () => {
     cy.get("#sugar").prev().should("contain", "Espresso");
   });
 
-  it.only("prevAll() to get all previous sibling DOM elements within elements", () => {
+  it("prevAll() to get all previous sibling DOM elements within elements", () => {
     // challenge: assert types of jobs and veridy number of previous jobs if sales is selected
     cy.get(".sales").prevAll().should("have.length", 2);
     // there are 2, because actual element it does not count
@@ -153,7 +153,18 @@ describe("Traversing DOM elements in Cypress", () => {
       .and("include", "Technology");
   });
 
-  it("prevUntil() to get all previous sibling DOM elements within elements until other element", () => {});
+  it.only("prevUntil() to get all previous sibling DOM elements within elements until other element", () => {
+    // challenge: check if list items contains following fruits:
+    cy.get("#veggie")
+      .prevUntil("#fruits")
+      .should("have.length", 5)
+      .invoke("text")
+      .should("contain", "Apple")
+      .and("contain", "Banana")
+      .and("contain", "Blackberries")
+      .and("contain", "Cherries")
+      .and("contain", "Figs");
+  });
 
   it("siblings() To get all sibling DOM elements of elements", () => {});
 });
