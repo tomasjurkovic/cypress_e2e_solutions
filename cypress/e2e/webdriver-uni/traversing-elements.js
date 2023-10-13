@@ -55,14 +55,28 @@ describe("Traversing DOM elements in Cypress", () => {
     // only one btn is selected based on this filter
   });
 
-  it.only("find() to retrieve DOM elements of a given selector", () => {
+  it("find() to retrieve DOM elements of a given selector", () => {
     cy.get(".traversal-pagination").find("a").should("have.length", 7);
 
     // find can get us multiple elements which are located inside the DOM tree under previously selected element
     // actual test just checks if there 7 a links elements in pagination
   });
 
-  it("first() to retrieve the first DOM element within elements ", () => {});
+  it.only("first() to retrieve the first DOM element within elements ", () => {
+    cy.get(".traversal-table tbody > tr > td")
+      .first()
+      .invoke("text")
+      .should("eq", "Andy");
+    // .traversal-table tbody > tr > td has 6 matches in 3 table rows
+    // first() only returns the first of 6 elements
+    // which is Andy
+
+    cy.get(".traversal-table tbody > tr")
+      .first()
+      .invoke("text")
+      .should("include", "Andy")
+      .and("include", "Otto");
+  });
 
   it("last() to retrieve the last DOM element within elements", () => {});
 
