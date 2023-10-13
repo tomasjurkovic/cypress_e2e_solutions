@@ -26,7 +26,7 @@ describe("Traversing DOM elements in Cypress", () => {
     // it is good example of using closest when traversal up through document
   });
 
-  it.only("eq() to retrieve a specific element based on index", () => {
+  it("eq() to retrieve a specific element based on index", () => {
     // example of using eq() command and assert if third item in the list is 'Milk'
     cy.get(".traversal-drinks-list")
       .find("li")
@@ -43,7 +43,17 @@ describe("Traversing DOM elements in Cypress", () => {
     // this is without 'find('li') because there are only 5 li elements
   });
 
-  it("filter() to retrieve DOM elements that match a specific selector", () => {});
+  it.only("filter() to retrieve DOM elements that match a specific selector", () => {
+    cy.get(".btn-group-toggle > *")
+      .filter(".active")
+      .should("have.class", "active")
+      .and("have.text", "Button-1")
+      .and("have.css", "background-color")
+      .and("eq", "rgb(40, 96, 144)");
+    // using filter to specify element based on some condition
+    // here it is that select only btns which has active class
+    // only one btn is selected based on this filter
+  });
 
   it("find() to retrieve DOM elements of a given selector", () => {});
 
