@@ -24,19 +24,21 @@ describe("Handle data table via WebdriverUni", () => {
       });
   });
 
-  it("Calculate and assert the total age of all users mine solution", () => {
+  it.only("Calculate and assert the total age of all users suggested solution", () => {
     let userDetails = [];
+    let numOfAges = 0;
     cy.get("#thumbnail-1 td")
       .each(($el, index, $list) => {
-        const td = Number($el.text());
-        if (td) {
-          // litterally using truthy value
-          cy.log(td);
-          finalAge += td;
-        }
+        userDetails[index] = $el.text();
       })
-      .then(($el) => {
-        expect(finalAge).is.eq(322);
+      .then(() => {
+        for (let i = 0; i < userDetails.length; i++) {
+          if (Number(userDetails[i])) {
+            cy.log(userDetails[i]);
+            numOfAges += Number(userDetails[i]);
+          }
+        }
+        expect(numOfAges).to.eq(322);
       });
   });
 });
