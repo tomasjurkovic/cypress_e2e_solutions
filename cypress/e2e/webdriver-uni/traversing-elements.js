@@ -95,7 +95,7 @@ describe("Traversing DOM elements in Cypress", () => {
       .and("include", "Larry");
   });
 
-  it.only("nextAll() to get all of the next sibling DOM elements within elements", () => {
+  it("nextAll() to get all of the next sibling DOM elements within elements", () => {
     // we can use nextAll() for verifying remaining siblings of an element that are located under the elemnt in the DOM tree
     // challenge is to assert number of elements located under the 'Tea' list item>
     // it has its own ID, so it's easy to locate
@@ -106,7 +106,15 @@ describe("Traversing DOM elements in Cypress", () => {
     cy.get("#tea").next().should("have.text", "Milk");
   });
 
-  it("nextUntil() to get all of the next sibling DOM elements within elements until another element", () => {});
+  it.only("nextUntil() to get all of the next sibling DOM elements within elements until another element", () => {
+    cy.get("#coffee")
+      .nextUntil("#milk")
+      .should("have.length", 1)
+      .and("have.text", "Tea");
+    // next until runs until meets specified condition
+    // so only 'Tea' list item is listed back
+    // not including provided element, that's why only 1 is returnd in this case
+  });
 
   it("not() to remove DOM element(s) from the set of elements", () => {});
 
