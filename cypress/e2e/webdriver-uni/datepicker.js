@@ -16,6 +16,15 @@ describe("Handling radio buttons", () => {
     cy.log(datePlus5.getDate()); // logs 21
   });
 
+  it.only("Filing datepicker with value with right amount of power", () => {
+    const dateInString = "11-02-2024";
+    cy.get("#datepicker input").invoke("val").should("eq", "10-16-2023");
+    cy.get("#datepicker input")
+      .clear({ force: true })
+      .type(dateInString, { force: true });
+    cy.get("#datepicker input").invoke("val").should("eq", dateInString);
+  });
+
   it("Selecting dates examples", () => {
     let date = new Date();
     date.setDate(date.getDate() + 360);
