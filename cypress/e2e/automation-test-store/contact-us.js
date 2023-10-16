@@ -1,6 +1,11 @@
 /// <reference types="Cypress"/>
 
 describe("Test Contact Us page form via Automation test store", () => {
+  before(() => {
+    // using alias in the same logic as I used it in another contact us test for webdriveruni
+    cy.fixture("userDetails").as("user");
+  });
+
   it("Should be able to submit a successful submission via contact us form", () => {
     cy.visit("https://automationteststore.com/");
     // cy.get(".info_links_footer a").contains("Contact Us").click();
@@ -14,8 +19,11 @@ describe("Test Contact Us page form via Automation test store", () => {
       .then(function (linkText) {
         console.log(`Headline of this link is following: ${linkText.text()}`);
       });
-    cy.get("#ContactUsFrm_first_name").type("Tomas");
-    cy.get("#ContactUsFrm_email").type("tomas@jurkovic.sk");
+
+    cy.get("@user").then((user) => {
+      cy.get("#ContactUsFrm_first_name").type(user.first_name);
+      cy.get("#ContactUsFrm_email").type(user.email);
+    });
     cy.get("#ContactUsFrm_email").should("have.attr", "name", "email");
     cy.get("#ContactUsFrm_enquiry").type("Just some text message");
 
