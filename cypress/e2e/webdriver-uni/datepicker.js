@@ -33,7 +33,9 @@ describe("Handling radio buttons", () => {
     let futureMonth = date.toLocaleDateString("default", { month: "long" });
     let futureMonthNumber = date.getMonth() + 1; // it is index based for weird reason
     let futureDay = date.getDate();
-    let completeFutureDateInString = `${futureMonthNumber}-${futureDay}-${futureYear}`;
+    let completeFutureDateInString = `${
+      futureMonthNumber < 10 ? "0" + futureMonthNumber : futureMonthNumber
+    }-${futureDay < 10 ? "0" + futureDay : futureDay}-${futureYear}`;
 
     cy.log(
       `Future year to select: ${futureYear}.\nFuture month to select: ${futureMonth} (${futureMonthNumber}).\nFuture day to select: ${futureDay}.`
@@ -68,15 +70,17 @@ describe("Handling radio buttons", () => {
       .should("eq", completeFutureDateInString);
   });
 
-  it.only("Selecting past dates examples with assertion", () => {
+  it("Selecting past dates examples with assertion", () => {
     let date = new Date();
-    date.setDate(date.getDate() - 365);
+    date.setDate(date.getDate() - 1550);
 
     let pastYear = date.getFullYear();
     let pastMonth = date.toLocaleDateString("default", { month: "long" });
     let pastMonthNumber = date.getMonth() + 1; // it is index based for weird reason
     let pastDay = date.getDate();
-    let completePastDateInString = `${pastMonthNumber}-${pastDay}-${pastYear}`;
+    let completePastDateInString = `${
+      pastMonthNumber < 10 ? "0" + pastMonthNumber : pastMonthNumber
+    }-${pastDay < 10 ? "0" + pastDay : pastDay}-${pastYear}`;
 
     cy.log(
       `past year to select: ${pastYear}.\npast month to select: ${pastMonth} (${pastMonthNumber}).\npast day to select: ${pastDay}.`
