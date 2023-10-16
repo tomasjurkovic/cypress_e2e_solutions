@@ -27,14 +27,16 @@ describe("Handling radio buttons", () => {
 
   it.only("Selecting dates examples", () => {
     let date = new Date();
-    date.setDate(date.getDate() + 360);
+    date.setDate(date.getDate() + 365);
 
     let futureYear = date.getFullYear();
     let futureMonth = date.toLocaleDateString("default", { month: "long" });
+    let futureMonthNumber = date.getMonth() + 1; // it is index based for weird reason
     let futureDay = date.getDate();
+    let completeFutureDateInString = `${futureMonthNumber}-${futureDay}-${futureYear}`;
 
     cy.log(
-      `Future year to select: ${futureYear}.\nFuture month to select: ${futureMonth}.\nFuture day to select: ${futureDay}.`
+      `Future year to select: ${futureYear}.\nFuture month to select: ${futureMonth} (${futureMonthNumber}).\nFuture day to select: ${futureDay}.`
     );
     cy.get("#datepicker").click();
 
@@ -55,6 +57,14 @@ describe("Handling radio buttons", () => {
           }
         });
     }
+
+    function selectFutureDay() {
+      cy.get('[class="day"]').contains(futureDay).click();
+    }
     selectMonthAndYear();
+    selectFutureDay();
+    cy.get("#datepicker input")
+      .invoke("val")
+      .should("eq", completeFutureDateInString);
   });
 });
