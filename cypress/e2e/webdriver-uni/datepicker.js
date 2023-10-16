@@ -27,5 +27,17 @@ describe("Handling radio buttons", () => {
     cy.log(
       `Future year to select: ${futureYear}.\nFuture month to select: ${futureMonth}.\nFuture day to select: ${futureDay}.`
     );
+
+    function selectMonthAndYear() {
+      cy.get(".datepicker-dropdown")
+        .find(".datepicker-switch")
+        .first()
+        .then((currentDate) => {
+          if (!currentDate.text().includes(futureYear)) {
+            cy.get(".next").first().click();
+            selectMonthAndYear(); // this will keep going as a loop until it matches criteria
+          }
+        });
+    }
   });
 });
