@@ -6,8 +6,8 @@ describe("Test Contact Us page form viac webdriverUni", () => {
   before(function () {
     // no need to even use example.json
     cy.fixture("example").then(function (data) {
-      this.data = data;
-      // globalThis.data = data;
+      // this.data = data; // not working so I replaced it with following:
+      globalThis.data = data;
     });
   });
 
@@ -28,11 +28,9 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     cy.url().should("include", "/Contact-Us/contactus.html");
 
     cy.get('[name="first_name"]').type(data.first_name);
-    cy.get('[name="last_name"]').type("Jurkovic");
-    cy.get('[name="email"]').type("tomas@jurkovic.sk");
-    cy.get("textarea.feedback-input").type(
-      "This is the comments section, so I put comment there."
-    );
+    cy.get('[name="last_name"]').type(data.last_name);
+    cy.get('[name="email"]').type(data.email);
+    cy.get("textarea.feedback-input").type(data.body);
     cy.get('[type="submit"]').click({ force: true });
     cy.get("#contact_reply h1").should(
       "have.text",
@@ -49,10 +47,10 @@ describe("Test Contact Us page form viac webdriverUni", () => {
 
   it("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
     // negative scenario code
-    cy.get('[name="first_name"]').type("Tomas");
-    cy.get('[name="last_name"]').type("Jurkovic");
-    // invalid email address:
-    cy.get('[name="email"]').type("tomas@sk");
+
+    cy.get('[name="first_name"]').type(data.first_name);
+    cy.get('[name="last_name"]').type(data.last_name);
+    cy.get('[name="email"]').type(data.email_invalid);
     // not included comment, but all fields are required
     cy.get('[type="submit"]').click({ force: true });
     cy.get("body").contains("Error: all fields are required");
