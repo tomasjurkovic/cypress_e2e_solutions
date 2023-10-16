@@ -1,13 +1,12 @@
 const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling dropdowns", () => {
-  it("Handle first dropdown", () => {
-    // possitive scenario code
+  beforeEach(() => {
     cy.visit("https://webdriveruniversity.com/");
-
-    // using function for repeating step:
     outsmartNewTabOpening("#dropdown-checkboxes-radiobuttons");
+  });
 
+  it("Handle first dropdown", () => {
     cy.get("#dropdowm-menu-1").as("progLangDropdown");
 
     // check default value:
@@ -18,12 +17,6 @@ describe("Handling dropdowns", () => {
   });
 
   it("Handle second dropdown", () => {
-    // possitive scenario code
-    cy.visit("https://webdriveruniversity.com/");
-
-    // using function for repeating step:
-    outsmartNewTabOpening("#dropdown-checkboxes-radiobuttons");
-
     cy.get("#dropdowm-menu-2").as("secondDropdown");
 
     // check default value:
@@ -38,12 +31,6 @@ describe("Handling dropdowns", () => {
   });
 
   it("Handle third dropdown", () => {
-    // possitive scenario code
-    cy.visit("https://webdriveruniversity.com/");
-
-    // using function for repeating step:
-    outsmartNewTabOpening("#dropdown-checkboxes-radiobuttons");
-
     cy.get("#dropdowm-menu-3").as("thirdDropdown");
 
     // check default value:
@@ -53,13 +40,7 @@ describe("Handling dropdowns", () => {
     cy.get("@thirdDropdown").should("have.value", "javascript");
   });
 
-  it.only("Validate fourth dropdown has some disabled option", () => {
-    // possitive scenario code
-    cy.visit("https://webdriveruniversity.com/");
-
-    // using function for repeating step:
-    outsmartNewTabOpening("#dropdown-checkboxes-radiobuttons");
-
+  it("Validate fourth dropdown has some disabled option", () => {
     cy.get("#fruit-selects").as("fruitsDropdown");
 
     // check default value:

@@ -3,12 +3,15 @@
 const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Test Contact Us page form viac webdriverUni", () => {
-  it("Should be able to submit a successful submission via contact us form", () => {
-    // possitive scenario code
+  beforeEach(() => {
     cy.visit("https://webdriveruniversity.com/");
 
     // using function for repeating step:
     outsmartNewTabOpening("#contact-us");
+  });
+
+  it("Should be able to submit a successful submission via contact us form", () => {
+    // possitive scenario code
     // NOW JUST FAKE ACCESS THE OPENED TAB:
     // cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
     // cy dokument, title and url examples:
@@ -38,9 +41,6 @@ describe("Test Contact Us page form viac webdriverUni", () => {
 
   it("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
     // negative scenario code
-    cy.visit("https://webdriveruniversity.com/");
-    outsmartNewTabOpening("#contact-us");
-
     cy.get('[name="first_name"]').type("Tomas");
     cy.get('[name="last_name"]').type("Jurkovic");
     // invalid email address:
