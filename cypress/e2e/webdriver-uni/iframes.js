@@ -1,12 +1,12 @@
 const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling iFrame and modals", () => {
-  it("Handle webdriveruni iframe and modal", () => {
-    // possitive scenario code
+  beforeEach(() => {
     cy.visit("https://webdriveruniversity.com/");
-
-    // using function for repeating step:
     outsmartNewTabOpening("#iframe");
+  });
+
+  it("Handle webdriveruni iframe and modal", () => {
     cy.get("#frame").then(($iframe) => {
       const body = $iframe.contents().find("body");
       cy.wrap(body).as("iframe");
@@ -25,7 +25,7 @@ describe("Handling iFrame and modals", () => {
         "contain",
         "Welcome to webdriveruniversity.com we sell a wide range of electrical goods such as laptops, game consoles, cameras..."
       );
-    // close modal by btn containing text:
+    // close modal by btn contain text:
     cy.get("@modal").contains("Close").click();
   });
 });

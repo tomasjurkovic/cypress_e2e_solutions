@@ -1,9 +1,12 @@
 const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling javaScript alerts", () => {
-  it("Basic alert handling", () => {
+  beforeEach(() => {
     cy.visit("https://webdriveruniversity.com/");
     outsmartNewTabOpening("#popup-alerts");
+  });
+
+  it("Basic alert handling", () => {
     cy.get("#button1").click();
     cy.on("window:alert", (str) => {
       expect(str).to.equal("I am an alert box!");
@@ -11,8 +14,6 @@ describe("Handling javaScript alerts", () => {
   });
 
   it("Validate js confirm alert box works correctly when clicking on 'Cancel'", () => {
-    cy.visit("https://webdriveruniversity.com/");
-    outsmartNewTabOpening("#popup-alerts");
     cy.get("#button4").click();
     cy.on("window:confirm", (str) => {
       // it has to be window:confirm if we wanted to simulate negative scenario of alert window
@@ -26,8 +27,6 @@ describe("Handling javaScript alerts", () => {
   });
 
   it("Validate js confirm alert box works correctly when clicking on 'OK'", () => {
-    cy.visit("https://webdriveruniversity.com/");
-    outsmartNewTabOpening("#popup-alerts");
     cy.get("#button4").click();
     cy.on("window:confirm", (str) => {
       // here it could be window:alert as well, but it has no chance to be false
@@ -40,9 +39,6 @@ describe("Handling javaScript alerts", () => {
   });
 
   it("Validate js confirm alert using stub", () => {
-    cy.visit("https://webdriveruniversity.com/");
-    outsmartNewTabOpening("#popup-alerts");
-
     const stub = cy.stub();
     cy.on("window:confirm", stub);
     cy.get("#button4")
