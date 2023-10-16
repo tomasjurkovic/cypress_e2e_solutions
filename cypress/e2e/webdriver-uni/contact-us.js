@@ -3,6 +3,14 @@
 const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Test Contact Us page form viac webdriverUni", () => {
+  before(function () {
+    // no need to even use example.json
+    cy.fixture("example").then(function (data) {
+      this.data = data;
+      // globalThis.data = data;
+    });
+  });
+
   beforeEach(() => {
     cy.visit("https://webdriveruniversity.com/");
 
@@ -19,7 +27,7 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     cy.title().should("include", "WebDriver | Contact Us");
     cy.url().should("include", "/Contact-Us/contactus.html");
 
-    cy.get('[name="first_name"]').type("Tomas");
+    cy.get('[name="first_name"]').type(data.first_name);
     cy.get('[name="last_name"]').type("Jurkovic");
     cy.get('[name="email"]').type("tomas@jurkovic.sk");
     cy.get("textarea.feedback-input").type(
