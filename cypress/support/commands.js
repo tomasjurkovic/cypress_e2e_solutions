@@ -73,6 +73,6 @@ Cypress.Commands.add(
     cy.get('[name="email"]').type(email);
     if (note) cy.get("textarea.feedback-input").type(note);
     cy.submitContactUsFormWebUni();
-    cy.get($selector).contains($textToLocate);
+    cy.get($selector).should("have.text", $textToLocate);
   }
 );
