@@ -1,11 +1,9 @@
-const { outsmartNewTabOpening } = require("../../support/commands");
-
 describe("Handling uploading files", () => {
   beforeEach(() => {
     cy.visit("https://webdriveruniversity.com/");
 
     // using function for repeating step:
-    outsmartNewTabOpening("#file-upload");
+    cy.outsmartNewTabOpening("#file-upload");
   });
   it("Validate file upload", () => {
     cy.get("#myFile").selectFile("cypress/fixtures/example.json"); // providing real route to file

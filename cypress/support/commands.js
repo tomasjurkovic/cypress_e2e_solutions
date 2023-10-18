@@ -30,6 +30,8 @@ Cypress.Commands.add("selectProduct", (productName) => {
     }
   });
 });
+
+// example of how it looks with export:
 export function outsmartNewTabOpening(element) {
   // mine solution:
   // cy.get(element).as("element");
@@ -42,3 +44,8 @@ export function outsmartNewTabOpening(element) {
   // easier with cypress invoke in one line:
   cy.get(element).invoke("removeAttr", "target").click({ force: true });
 }
+
+// how it looks as cypress custom command:
+Cypress.Commands.add("outsmartNewTabOpening", (linkEl) => {
+  cy.get(linkEl).invoke("removeAttr", "target").click({ force: true });
+});
