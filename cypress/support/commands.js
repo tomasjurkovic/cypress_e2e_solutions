@@ -23,7 +23,13 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-
+Cypress.Commands.add("selectProduct", (productName) => {
+  cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
+    if ($el.text() === productName) {
+      cy.wrap($el).click();
+    }
+  });
+});
 export function outsmartNewTabOpening(element) {
   // mine solution:
   // cy.get(element).as("element");
