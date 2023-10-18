@@ -76,3 +76,12 @@ Cypress.Commands.add(
     cy.get($selector).should("have.text", $textToLocate);
   }
 );
+
+Cypress.Commands.add("addProductToBasket", (productName) => {
+  cy.get(".fixed_wrapper .prdocutname").each(($el, index, $list) => {
+    if ($el.text() === productName) {
+      cy.log($el.text());
+      cy.get(".productCart").eq[index].click();
+    }
+  });
+});
