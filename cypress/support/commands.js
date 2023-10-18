@@ -49,3 +49,30 @@ export function outsmartNewTabOpening(element) {
 Cypress.Commands.add("outsmartNewTabOpening", (linkEl) => {
   cy.get(linkEl).invoke("removeAttr", "target").click({ force: true });
 });
+
+Cypress.Commands.add(
+  "fillContactUsFormWebUni",
+  (firstName, lastName, email, note) => {
+    cy.get('[name="first_name"]').type(firstName);
+    cy.get('[name="last_name"]').type(lastName);
+    cy.get('[name="email"]').type(email);
+    if (!note) return;
+    cy.get("textarea.feedback-input").type(note);
+  }
+);
+
+Cypress.Commands.add("submitContactUsFormWebUni", () => {
+  cy.get('[type="submit"]').click({ force: true });
+});
+
+Cypress.Commands.add(
+  "fillAndSubmitContactUsFormWebUni",
+  (firstName, lastName, email, note, $selector, $textToLocate) => {
+    cy.get('[name="first_name"]').type(firstName);
+    cy.get('[name="last_name"]').type(lastName);
+    cy.get('[name="email"]').type(email);
+    if (note) cy.get("textarea.feedback-input").type(note);
+    cy.submitContactUsFormWebUni();
+    cy.get($selector).contains($textToLocate);
+  }
+);
