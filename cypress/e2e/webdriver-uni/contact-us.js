@@ -27,11 +27,13 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     cy.title().should("include", "WebDriver | Contact Us");
     cy.url().should("include", "/Contact-Us/contactus.html");
 
-    cy.get('[name="first_name"]').type(data.first_name);
-    cy.get('[name="last_name"]').type(data.last_name);
-    cy.get('[name="email"]').type(data.email);
-    cy.get("textarea.feedback-input").type(data.body);
-    cy.get('[type="submit"]').click({ force: true });
+    cy.fillContactUsFormWebUni(
+      data.first_name,
+      data.last_name,
+      data.email,
+      data.body
+    );
+    cy.submitContactUsFormWebUni();
     cy.get("#contact_reply h1").should(
       "have.text",
       "Thank You for your Message!"
@@ -47,16 +49,35 @@ describe("Test Contact Us page form viac webdriverUni", () => {
 
   it("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
     // negative scenario code
+    cy.fillContactUsFormWebUni(
+      data.first_name,
+      data.last_name,
+      data.email_invalid,
+      undefined
+    );
 
-    cy.get('[name="first_name"]').type(data.first_name);
-    cy.get('[name="last_name"]').type(data.last_name);
-    cy.get('[name="email"]').type(data.email_invalid);
     // not included comment, but all fields are required
-    cy.get('[type="submit"]').click({ force: true });
+    cy.submitContactUsFormWebUni();
     cy.get("body").contains("Error: all fields are required");
     cy.get("body").should(
       "have.text",
       "\n\n\n Error: all fields are required\n Error: Invalid email address\n\n\n"
     );
   });
+
+  it("Should be able to submit a successful submission via contact us form in one custom command", () => {
+    // possitive scenario code
+    cy.fillAndSubmitContactUsFormWebUni(
+      data.first_name,
+      data.last_name,
+      data.email,
+      data.body,
+      "#contact_reply h1",
+      "Thank You for your Message!"
+    );
+  });
+
+  // it.only('only this test would ru', () => {
+  //   // some random test which would be only run if it is outcommented
+  // });
 });
