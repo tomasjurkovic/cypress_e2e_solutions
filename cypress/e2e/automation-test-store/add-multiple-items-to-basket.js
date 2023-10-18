@@ -11,14 +11,8 @@ describe("Adding multiple items to the basket", () => {
   });
 
   it("Add specific items to the basket", () => {
-    // cy.get(".jumbotron").each(($el, index, $list) => {
-    //   $el[index]
-    //     .find("a[title$='Add to Cart']")
-    //     .first()
-    //     .then(($btnEl) => {
-    //       cy.wrap($btnEl).click();
-    //     });
-    //   cy.log(`Index: ${index} : ${$el.text()}`);
-    // });
+    globalThis.data.productNames.forEach(function (element) {
+      cy.addProductToBasket(data.productNames[element]);
+    });
   });
 });
