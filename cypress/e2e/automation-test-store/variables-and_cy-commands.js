@@ -62,9 +62,15 @@ describe("Verifying variables, cypress commands and jquerry commands", () => {
     });
   });
 
-  it("Iterating over element", () => {
+  it("Iterating over element with Eau Parfumee au The Vert Shampoo", () => {
     cy.visit("https://automationteststore.com/");
     cy.get("a[href*='product/category&path=']").contains("Hair Care").click();
     cy.selectProduct("Eau Parfumee au The Vert Shampoo");
+  });
+
+  it("Iterating over element with Pantene Pro-V Conditioner, Classic Care", () => {
+    cy.visit("https://automationteststore.com/");
+    cy.get("a[href*='product/category&path=']").contains("Hair Care").click();
+    cy.selectProduct("Pantene Pro-V Conditioner, Classic Care");
   });
 });
