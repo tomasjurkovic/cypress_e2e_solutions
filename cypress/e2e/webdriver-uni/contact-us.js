@@ -77,7 +77,15 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     );
   });
 
-  // it.only('only this test would ru', () => {
-  //   // some random test which would be only run if it is outcommented
-  // });
+  it("Should not be able to submit a successful submission via contact us form ass all fields are required in one custom command", () => {
+    // possitive scenario code
+    cy.fillAndSubmitContactUsFormWebUni(
+      data.first_name,
+      data.last_name,
+      data.email_invalid,
+      undefined,
+      "body",
+      "\n\n\n Error: all fields are required\n Error: Invalid email address\n\n\n"
+    );
+  });
 });
