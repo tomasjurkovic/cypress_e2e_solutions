@@ -4,7 +4,7 @@ const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handle data table via WebdriverUni", () => {
   beforeEach(() => {
-    cy.visit("http://webdriveruniversity.com/");
+    cy.visit("/");
     outsmartNewTabOpening("#data-table");
   });
 

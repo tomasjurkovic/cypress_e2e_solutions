@@ -1,6 +1,6 @@
 describe("Handling uploading files", () => {
   beforeEach(() => {
-    cy.visit("https://webdriveruniversity.com/");
+    cy.visit("/");
 
     // using function for repeating step:
     cy.outsmartNewTabOpening("#file-upload");

@@ -1,8 +1,11 @@
 const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling mouse action", () => {
+  beforeEach(() => {
+    cy.visit("/");
+  });
+
   it("Handling scrolling into view event", () => {
-    cy.visit("https://webdriveruniversity.com/");
     // this is the way how to scrollIntoView
     cy.get("#actions").scrollIntoView();
     // using function for repeating step:t
@@ -10,8 +13,6 @@ describe("Handling mouse action", () => {
   });
 
   it("It should be able to drag and drop a dragable item", () => {
-    cy.visit("https://webdriveruniversity.com/");
-
     // using function for repeating step:t
     outsmartNewTabOpening("#actions");
 
@@ -27,7 +28,6 @@ describe("Handling mouse action", () => {
   });
 
   it("It should be able to perform doubleclick event", () => {
-    cy.visit("https://webdriveruniversity.com/");
     // using function for repeating step:t
     outsmartNewTabOpening("#actions");
     // check first color:
@@ -46,7 +46,6 @@ describe("Handling mouse action", () => {
   });
 
   it("Validate holding a left mouse clickcbutton on a given element", () => {
-    cy.visit("https://webdriveruniversity.com/");
     // using function for repeating step:t
     outsmartNewTabOpening("#actions");
 
@@ -66,9 +65,7 @@ describe("Handling mouse action", () => {
       });
   });
 
-  it.only("It should be able to handle and verify hovering over element", () => {
-    cy.visit("https://webdriveruniversity.com/");
-
+  it("It should be able to handle and verify hovering over element", () => {
     // using function for repeating step:t
     outsmartNewTabOpening("#actions");
 

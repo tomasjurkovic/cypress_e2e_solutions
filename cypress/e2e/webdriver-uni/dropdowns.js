@@ -2,7 +2,7 @@ const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling dropdowns", () => {
   beforeEach(() => {
-    cy.visit("https://webdriveruniversity.com/");
+    cy.visit("/");
     outsmartNewTabOpening("#dropdown-checkboxes-radiobuttons");
   });
 

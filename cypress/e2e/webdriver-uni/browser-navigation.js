@@ -4,7 +4,7 @@ const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Validate webdriveruni homepage links", () => {
   it("Confirm links redirect to the correct pages", () => {
-    cy.visit("https://webdriveruniversity.com/");
+    cy.visit("/");
     outsmartNewTabOpening("#contact-us");
     cy.url().should("include", "/Contact-Us/contactus.html");
 

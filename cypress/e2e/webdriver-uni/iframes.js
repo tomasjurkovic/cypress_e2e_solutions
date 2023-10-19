@@ -2,7 +2,7 @@ const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling iFrame and modals", () => {
   beforeEach(() => {
-    cy.visit("https://webdriveruniversity.com/");
+    cy.visit("/");
     outsmartNewTabOpening("#iframe");
   });
 

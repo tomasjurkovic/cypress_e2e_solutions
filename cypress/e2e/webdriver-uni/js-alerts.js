@@ -2,7 +2,7 @@ const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling javaScript alerts", () => {
   beforeEach(() => {
-    cy.visit("https://webdriveruniversity.com/");
+    cy.visit("/");
     outsmartNewTabOpening("#popup-alerts");
   });
 
