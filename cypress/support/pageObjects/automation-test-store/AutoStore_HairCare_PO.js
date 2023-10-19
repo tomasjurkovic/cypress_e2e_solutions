@@ -1,9 +1,13 @@
 class AutoStore_HairCare_PO {
+  constructor() {
+    this.basketEl = ".dropdown-toggle > .fa";
+  }
+
   addHairCareProductsToBasket() {
     globalThis.data.productNames.forEach(function (element) {
       cy.addProductToBasket(element);
     });
-    cy.get(".dropdown-toggle > .fa").click();
+    cy.get(this.basketEl).click();
   }
 }
 
