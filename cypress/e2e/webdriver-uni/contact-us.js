@@ -1,7 +1,7 @@
 /// <reference types="Cypress"/>
 // import { outsmartNewTabOpening } from "../../support/commands";
 import HomePage_PO from "../../support/pageObjects/webdriver-uni/Homepage_PO";
-
+import Contact_Us_PO from "../../support/pageObjects/webdriver-uni/Contact_Us_PO";
 describe("Test Contact Us page form viac webdriverUni", () => {
   before(function () {
     // no need to even use example.json
@@ -27,6 +27,7 @@ describe("Test Contact Us page form viac webdriverUni", () => {
   });
 
   it("Should be able to submit a successful submission via contact us form", () => {
+    const contact_us_PO = new Contact_Us_PO();
     // possitive scenario code
     // NOW JUST FAKE ACCESS THE OPENED TAB:
     // cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
@@ -35,13 +36,13 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     cy.title().should("include", "WebDriver | Contact Us");
     cy.url().should("include", "/Contact-Us/contactus.html");
 
-    cy.fillContactUsFormWebUni(
+    contact_us_PO.fillContactUsForm(
       Cypress.env("first_name"),
       data.last_name,
       data.email,
       data.body
     );
-    cy.submitContactUsFormWebUni();
+    contact_us_PO.submitContactUsForm();
     cy.get("#contact_reply h1").should(
       "have.text",
       "Thank You for your Message!"
@@ -57,7 +58,9 @@ describe("Test Contact Us page form viac webdriverUni", () => {
 
   it("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
     // negative scenario code
-    cy.fillContactUsFormWebUni(
+    const contact_us_PO = new Contact_Us_PO();
+
+    contact_us_PO.fillContactUsForm(
       data.first_name,
       data.last_name,
       data.email_invalid,
@@ -65,7 +68,7 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     );
 
     // not included comment, but all fields are required
-    cy.submitContactUsFormWebUni();
+    contact_us_PO.submitContactUsForm();
     cy.get("body").contains("Error: all fields are required");
     cy.get("body").should(
       "have.text",
@@ -75,7 +78,8 @@ describe("Test Contact Us page form viac webdriverUni", () => {
 
   it("Should be able to submit a successful submission via contact us form in one custom command", () => {
     // possitive scenario code
-    cy.fillAndSubmitContactUsFormWebUni(
+    const contact_us_PO = new Contact_Us_PO();
+    contact_us_PO.fillAndSubmitContactUsForm(
       data.first_name,
       data.last_name,
       data.email,
@@ -86,8 +90,9 @@ describe("Test Contact Us page form viac webdriverUni", () => {
   });
 
   it("Should not be able to submit a successful submission via contact us form ass all fields are required in one custom command", () => {
-    // possitive scenario code
-    cy.fillAndSubmitContactUsFormWebUni(
+    // negative scenario code
+    const contact_us_PO = new Contact_Us_PO();
+    contact_us_PO.fillAndSubmitContactUsForm(
       data.first_name,
       data.last_name,
       data.email_invalid,
