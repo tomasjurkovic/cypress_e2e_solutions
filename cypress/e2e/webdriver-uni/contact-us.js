@@ -3,6 +3,9 @@
 import HomePage_PO from "../../support/pageObjects/webdriver-uni/Homepage_PO";
 import Contact_Us_PO from "../../support/pageObjects/webdriver-uni/Contact_Us_PO";
 describe("Test Contact Us page form viac webdriverUni", () => {
+  const homepage_PO = new HomePage_PO();
+  const contact_us_PO = new Contact_Us_PO();
+
   before(function () {
     // no need to even use example.json
     cy.fixture("example").then(function (data) {
@@ -12,7 +15,6 @@ describe("Test Contact Us page form viac webdriverUni", () => {
   });
 
   beforeEach(() => {
-    const homepage_PO = new HomePage_PO();
     homepage_PO.visitHomePage();
     homepage_PO.clickOn_ContactUs_Button();
     // cy.visit(
@@ -27,7 +29,6 @@ describe("Test Contact Us page form viac webdriverUni", () => {
   });
 
   it("Should be able to submit a successful submission via contact us form", () => {
-    const contact_us_PO = new Contact_Us_PO();
     // possitive scenario code
     // NOW JUST FAKE ACCESS THE OPENED TAB:
     // cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
@@ -58,8 +59,6 @@ describe("Test Contact Us page form viac webdriverUni", () => {
 
   it("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
     // negative scenario code
-    const contact_us_PO = new Contact_Us_PO();
-
     contact_us_PO.fillContactUsForm(
       data.first_name,
       data.last_name,
@@ -78,7 +77,6 @@ describe("Test Contact Us page form viac webdriverUni", () => {
 
   it("Should be able to submit a successful submission via contact us form in one custom command", () => {
     // possitive scenario code
-    const contact_us_PO = new Contact_Us_PO();
     contact_us_PO.fillAndSubmitContactUsForm(
       data.first_name,
       data.last_name,
@@ -91,7 +89,6 @@ describe("Test Contact Us page form viac webdriverUni", () => {
 
   it("Should not be able to submit a successful submission via contact us form ass all fields are required in one custom command", () => {
     // negative scenario code
-    const contact_us_PO = new Contact_Us_PO();
     contact_us_PO.fillAndSubmitContactUsForm(
       data.first_name,
       data.last_name,
