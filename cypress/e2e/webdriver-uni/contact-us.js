@@ -28,7 +28,7 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     cy.url().should("include", "/Contact-Us/contactus.html");
 
     cy.fillContactUsFormWebUni(
-      data.first_name,
+      Cypress.env("first_name"),
       data.last_name,
       data.email,
       data.body

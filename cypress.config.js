@@ -11,6 +11,9 @@ module.exports = defineConfig({
     experimentalModifyObstructiveThirdPartyCode: true,
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 120000,
-    // comment
+    // env. variables:
+    env: {
+      first_name: "Sarah",
+    },
   },
 });
