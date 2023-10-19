@@ -1,7 +1,9 @@
+import AutoStore_HairCare_PO from "../../support/pageObjects/automation-test-store/AutoStore_HairCare_PO";
 import AutoStore_Homepage_PO from "../../support/pageObjects/automation-test-store/AutoStore_Homepage_PO";
 
 describe("Adding multiple items to the basket", () => {
-  const autostore_homepage_PO = AutoStore_Homepage_PO();
+  const autostore_homepage_PO = new AutoStore_Homepage_PO();
+  const autostore_haircare_PO = new AutoStore_HairCare_PO();
   before(() => {
     cy.fixture("products").then((data) => {
       globalThis.data = data;
@@ -16,9 +18,6 @@ describe("Adding multiple items to the basket", () => {
   });
 
   it("Add specific items to basket", () => {
-    globalThis.data.productNames.forEach(function (element) {
-      cy.addProductToBasket(element);
-    });
-    cy.get(".dropdown-toggle > .fa").click();
+    autostore_haircare_PO.addHairCareProductsToBasket();
   });
 });
