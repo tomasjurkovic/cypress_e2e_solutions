@@ -2,7 +2,7 @@ const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling radio buttons", () => {
   beforeEach(() => {
-    cy.visit("https://webdriveruniversity.com/");
+    cy.visit("/");
 
     // using function for repeating step:
     outsmartNewTabOpening("#datepicker");

@@ -1,13 +1,14 @@
 const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling radio buttons", () => {
-  it("Handle radio button", () => {
-    // possitive scenario code
-    cy.visit("https://webdriveruniversity.com/");
+  beforeEach(() => {
+    cy.visit("/");
 
     // using function for repeating step:
     outsmartNewTabOpening("#dropdown-checkboxes-radiobuttons");
+  });
 
+  it("Handle radio button", () => {
     // cy.get("#radio-buttons input[value='blue']").as("radioBlue");
     //   cy.get("@radioBlue").check();
     // could be replaced:
@@ -22,25 +23,13 @@ describe("Handling radio buttons", () => {
   });
 
   it("Validate disabled radio button", () => {
-    // possitive scenario code
-    cy.visit("https://webdriveruniversity.com/");
-
-    // using function for repeating step:
-    outsmartNewTabOpening("#dropdown-checkboxes-radiobuttons");
-
     cy.get("#radio-buttons-selected-disabled input[value='cabbage']").as(
       "radioDisabled"
     );
     cy.get("@radioDisabled").should("be.disabled");
   });
 
-  it.only("Validate already checked radio button", () => {
-    // possitive scenario code
-    cy.visit("https://webdriveruniversity.com/");
-
-    // using function for repeating step:
-    outsmartNewTabOpening("#dropdown-checkboxes-radiobuttons");
-
+  it("Validate already checked radio button", () => {
     cy.get("#radio-buttons-selected-disabled input[value='pumpkin']").as(
       "radioChecked"
     );
