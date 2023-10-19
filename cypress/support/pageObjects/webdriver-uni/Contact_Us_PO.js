@@ -1,15 +1,24 @@
 class Contact_Us_PO {
+  // constructor and selectors:
+  constructor() {
+    this.firstNameInput = '[name="first_name"]';
+    this.lastNameInput = '[name="last_name"]';
+    this.emailInput = '[name="email"]';
+    this.noteInput = "textarea.feedback-input";
+    this.submitBtn = '[type="submit"]';
+  }
+
   // commands:
   fillContactUsForm(firstName, lastName, email, note) {
-    cy.get('[name="first_name"]').type(firstName);
-    cy.get('[name="last_name"]').type(lastName);
-    cy.get('[name="email"]').type(email);
+    cy.get(this.firstNameInput).type(firstName);
+    cy.get(this.lastNameInput).type(lastName);
+    cy.get(this.emailInput).type(email);
     if (!note) return;
-    cy.get("textarea.feedback-input").type(note);
+    cy.get(this.noteInput).type(note);
   }
 
   submitContactUsForm() {
-    cy.get('[type="submit"]').click({ force: true });
+    cy.get(this.submitBtn).click({ force: true });
   }
 
   fillAndSubmitContactUsForm(
@@ -20,11 +29,11 @@ class Contact_Us_PO {
     $selector,
     $textToLocate
   ) {
-    cy.get('[name="first_name"]').type(firstName);
-    cy.get('[name="last_name"]').type(lastName);
-    cy.get('[name="email"]').type(email);
-    if (note) cy.get("textarea.feedback-input").type(note);
-    cy.get('[type="submit"]').click({ force: true });
+    cy.get(this.firstNameInput).type(firstName);
+    cy.get(this.lastNameInput).type(lastName);
+    cy.get(this.emailInput).type(email);
+    if (note) cy.get(this.noteInput).type(note);
+    cy.get(this.submitBtn).click({ force: true });
     cy.get($selector).should("have.text", $textToLocate);
   }
 }
