@@ -12,10 +12,15 @@ describe("Test Contact Us page form viac webdriverUni", () => {
   });
 
   beforeEach(() => {
-    cy.visit("/");
+    cy.visit(
+      Cypress.env("webdriveruni_homepage") + "/Contact-Us/contactus.html"
+    );
+    // cy.visit("/" + "/Contact-Us/contactus.html");
 
-    // using function for repeating step:
-    outsmartNewTabOpening("#contact-us");
+    // it replaced this:
+    // cy.visit("/");
+    // // using function for repeating step:
+    // outsmartNewTabOpening("#contact-us");
   });
 
   it("Should be able to submit a successful submission via contact us form", () => {

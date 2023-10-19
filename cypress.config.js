@@ -14,6 +14,7 @@ module.exports = defineConfig({
     // env. variables:
     env: {
       first_name: "Sarah",
+      webdriveruni_homepage: "https://webdriveruniversity.com/",
     },
     baseUrl: "https://webdriveruniversity.com/",
   },
