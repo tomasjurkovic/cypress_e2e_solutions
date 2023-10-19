@@ -2,10 +2,7 @@ const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling checkboxes", () => {
   beforeEach(() => {
-    cy.visit("/");
-
-    // using function for repeating step:
-    outsmartNewTabOpening("#dropdown-checkboxes-radiobuttons");
+    cy.navigateTo_WebDriverUni_Checkbox_Page();
   });
 
   it("Validate checking checkbox", () => {

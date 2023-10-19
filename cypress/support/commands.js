@@ -85,3 +85,11 @@ Cypress.Commands.add("addProductToBasket", (productName) => {
     }
   });
 });
+
+Cypress.Commands.add("navigateTo_WebDriverUni_HomePage", (productName) => {
+  cy.visit("/");
+});
+
+Cypress.Commands.add("navigateTo_WebDriverUni_Checkbox_Page", (productName) => {
+  cy.visit("/" + "/Dropdown-Checkboxes-RadioButtons/index.html");
+});
