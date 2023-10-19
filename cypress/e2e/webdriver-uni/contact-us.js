@@ -1,6 +1,6 @@
 /// <reference types="Cypress"/>
-
-const { outsmartNewTabOpening } = require("../../support/commands");
+// import { outsmartNewTabOpening } from "../../support/commands";
+import HomePage_PO from "../../support/pageObjects/webdriver-uni/Homepage_PO";
 
 describe("Test Contact Us page form viac webdriverUni", () => {
   before(function () {
@@ -12,9 +12,12 @@ describe("Test Contact Us page form viac webdriverUni", () => {
   });
 
   beforeEach(() => {
-    cy.visit(
-      Cypress.env("webdriveruni_homepage") + "/Contact-Us/contactus.html"
-    );
+    const homepage_PO = new HomePage_PO();
+    homepage_PO.visitHomePage();
+    homepage_PO.clickOn_ContactUs_Button();
+    // cy.visit(
+    //   Cypress.env("webdriveruni_homepage") + "/Contact-Us/contactus.html"
+    // );
     // cy.visit("/" + "/Contact-Us/contactus.html");
 
     // it replaced this:
