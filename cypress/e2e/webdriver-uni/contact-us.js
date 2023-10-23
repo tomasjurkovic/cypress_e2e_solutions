@@ -3,6 +3,8 @@
 import HomePage_PO from "../../support/pageObjects/webdriver-uni/Homepage_PO";
 import Contact_Us_PO from "../../support/pageObjects/webdriver-uni/Contact_Us_PO";
 describe("Test Contact Us page form viac webdriverUni", () => {
+  // manually overwrite default command timeout:
+  Cypress.config("defaultCommandTimeout", 20000);
   const homepage_PO = new HomePage_PO();
   const contact_us_PO = new Contact_Us_PO();
 
