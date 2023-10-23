@@ -2,7 +2,6 @@
 // import { outsmartNewTabOpening } from "../../support/commands";
 import HomePage_PO from "../../support/pageObjects/webdriver-uni/Homepage_PO";
 import Contact_Us_PO from "../../support/pageObjects/webdriver-uni/Contact_Us_PO";
-import milliseconds from "mocha/lib/ms";
 describe("Test Contact Us page form viac webdriverUni", () => {
   // manually overwrite default command timeout:
   Cypress.config("defaultCommandTimeout", 20000);
