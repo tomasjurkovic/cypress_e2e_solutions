@@ -11,6 +11,8 @@ module.exports = defineConfig({
     experimentalModifyObstructiveThirdPartyCode: true,
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 120000,
+    screenshotOnRunFailure: true,
+    trashAssetsBeforeRuns: true,
     // env. variables:
     env: {
       first_name: "Sarah",
