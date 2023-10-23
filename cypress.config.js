@@ -14,6 +14,8 @@ module.exports = defineConfig({
     screenshotOnRunFailure: true,
     video: false,
     trashAssetsBeforeRuns: true,
+    viewportHeight: 1080,
+    viewportWidth: 1920,
     // videoCompression: true,
     // env. variables:
     env: {
