@@ -12,6 +12,8 @@ module.exports = defineConfig({
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 120000,
     screenshotOnRunFailure: true,
+    video: false, // must be true if I want to record videos
+    // videoCompression: true,
     trashAssetsBeforeRuns: true,
     // env. variables:
     env: {
