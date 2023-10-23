@@ -34,7 +34,8 @@ class Contact_Us_PO {
     cy.get(this.emailInput).type(email);
     if (note) cy.get(this.noteInput).type(note);
     cy.get(this.submitBtn).click({ force: true });
-    cy.get($selector).should("have.text", $textToLocate);
+    cy.get($selector).should("have.text", $textToLocate, { timeout: 60000 });
+    // overwriting timeout can be done also for assertions
   }
 }
 
