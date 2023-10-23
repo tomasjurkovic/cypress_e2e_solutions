@@ -11,6 +11,8 @@ describe("Adding multiple items to the basket", () => {
   });
 
   beforeEach(() => {
+    cy.clearLocalStorage();
+    cy.clearCookies();
     autostore_homepage_PO.navigateToHomepage();
     autostore_homepage_PO.clickOn_HairCare_Link();
     // cy.visit("https://automationteststore.com/");
