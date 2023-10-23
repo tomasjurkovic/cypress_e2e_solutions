@@ -63,6 +63,8 @@ describe("Test Contact Us page form viac webdriverUni", () => {
 
     console.log("Test finished successfully");
     cy.log("This is equivalent of above, actually visible in Cypress console");
+    // cy.screenshot("Make a contact us form submission");
+    // this will make a screenshot after run
   });
 
   // it.only('only this test would ru', () => {
