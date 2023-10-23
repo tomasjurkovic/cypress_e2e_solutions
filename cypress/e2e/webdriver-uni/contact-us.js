@@ -19,6 +19,8 @@ describe("Test Contact Us page form viac webdriverUni", () => {
   beforeEach(() => {
     homepage_PO.visitHomePage();
     homepage_PO.clickOn_ContactUs_Button();
+    // using cy.pause():
+    cy.pause();
     // cy.visit(
     //   Cypress.env("webdriveruni_homepage") + "/Contact-Us/contactus.html"
     // );
@@ -50,6 +52,11 @@ describe("Test Contact Us page form viac webdriverUni", () => {
       "have.text",
       "Thank You for your Message!"
     );
+
+    // cy.pause can be part of command chains like this:
+    /* cy.get("#contact_reply h1")
+      .pause()
+      .should("have.text", "Thank You for your Message!"); */
 
     console.log("Test finished successfully");
     cy.log("This is equivalent of above, actually visible in Cypress console");
