@@ -7,7 +7,8 @@ class HomePage_PO {
   }
   // commands:
   visitHomePage() {
-    cy.visit(Cypress.env("webdriveruni_homepage"));
+    cy.visit(Cypress.env("webdriveruni_homepage"), { timeout: 60000 });
+    // here we override default settings where timeout is set to 2 minutes
   }
 
   clickOn_ContactUs_Button() {
