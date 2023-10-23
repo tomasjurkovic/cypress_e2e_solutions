@@ -12,7 +12,9 @@ class HomePage_PO {
   }
 
   clickOn_ContactUs_Button() {
-    outsmartNewTabOpening(this.contactUsLink);
+    outsmartNewTabOpening(this.contactUsLink), { timeout: 8000 };
+    // overwriting default timeout settings can be done
+    // also on custom commands, page object's method or on every command we want
   }
 }
 
