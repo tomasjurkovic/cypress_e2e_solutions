@@ -2,6 +2,8 @@
 
 describe("Test Contact Us page form via Automation test store", () => {
   before(() => {
+    // using change of viewport size:
+    cy.viewport(550, 750);
     // using alias in the same logic as I used it in another contact us test for webdriveruni
     cy.fixture("userDetails").as("user");
   });
