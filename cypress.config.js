@@ -1,7 +1,7 @@
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
-  projectId: 'khme5n',
+  projectId: "khme5n",
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
@@ -24,5 +24,9 @@ module.exports = defineConfig({
       webdriveruni_homepage: "https://webdriveruniversity.com/",
     },
     baseUrl: "https://webdriveruniversity.com/",
+    reporter: "cypress-multi-reporters",
+    reporterOptions: {
+      configFile: "reporter-config.json",
+    },
   },
 });
