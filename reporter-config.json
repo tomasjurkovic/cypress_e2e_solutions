@@ -5,7 +5,7 @@
   },
   "reporterOptions": {
     "reporterEnabled": "mochawesome",
-    "mochawesome": {
+    "mochawesomeReporterOptions": {
       "reportDir": "cypress/results/mochawesome",
       "quite": true,
       "overwrite": false,
