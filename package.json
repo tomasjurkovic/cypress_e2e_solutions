@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/tomasjurkovic/cypress_e2e_solutions#readme",
   "devDependencies": {
-    "cypress": "^13.3.0"
+    "cypress": "^13.3.2"
   }
 }

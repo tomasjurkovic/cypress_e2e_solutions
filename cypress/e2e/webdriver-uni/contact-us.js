@@ -1,4 +1,3 @@
-/// <reference types="Cypress"/>
 // import { outsmartNewTabOpening } from "../../support/commands";
 import HomePage_PO from "../../support/pageObjects/webdriver-uni/Homepage_PO";
 import Contact_Us_PO from "../../support/pageObjects/webdriver-uni/Contact_Us_PO";
