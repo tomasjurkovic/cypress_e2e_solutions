@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-10-24T13:09:34.090Z",
+    "end": "2023-10-24T13:09:36.878Z",
+    "duration": 2788,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "19152e63-2298-4f9d-b8fc-509803280c21",
+      "title": "",
+      "fullFile": "cypress\\e2e\\webdriver-uni\\autocomplete_textfield.js",
+      "file": "cypress\\e2e\\webdriver-uni\\autocomplete_textfield.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "8f3d97d0-24b2-4c63-8e65-7fc63e8dc372",
+          "title": "Handling autocomplete dropdown list",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validate selecting specific product via autocomplete dropdown list",
+              "fullTitle": "Handling autocomplete dropdown list Validate selecting specific product via autocomplete dropdown list",
+              "timedOut": null,
+              "duration": 2744,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// possitive scenario code\ncy.visit(\"/\"); // it uses based url from cypress config file.\n// using function for repeating step:\noutsmartNewTabOpening(\"#autocomplete-textfield\");\ncy.get(\"#myInput\").type(\"A\");\ncy.get(\"#myInputautocomplete-list > *\").each(($el, index, $list) => {\n  const product = $el.text();\n  const productToSelect = \"Avacado\";\n  if (product === productToSelect) {\n    //   $el.click();\n    $el.trigger(\"click\");\n    cy.get(\"#submit-button\").click();\n    cy.url().should(\"include\", productToSelect);\n  }\n  // challenge to extend test and add check for grapes:\n}).then(() => {\n  cy.get(\"#myInput\").type(\"G\");\n  cy.get(\"#myInputautocomplete-list > *\").each(($el, index, $list) => {\n    const product = $el.text();\n    const productToSelect = \"Grapes\";\n    if (product === productToSelect) {\n      // $el.click();\n      // using instead of the above this:\n      $el.trigger(\"click\");\n      cy.get(\"#submit-button\").click();\n      cy.url().should(\"include\", productToSelect);\n    }\n    // challenge to extend test and add check for grapes:\n  });\n});",
+              "err": {},
+              "uuid": "ef19a7cc-f566-4d3b-9b03-62f95ccb3794",
+              "parentUUID": "8f3d97d0-24b2-4c63-8e65-7fc63e8dc372",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ef19a7cc-f566-4d3b-9b03-62f95ccb3794"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2744,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-10-24T13:13:21.669Z",
+    "end": "2023-10-24T13:13:28.756Z",
+    "duration": 7087,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "18003a87-56d9-4412-8387-ada72685bdd9",
+      "title": "",
+      "fullFile": "cypress\\e2e\\automation-test-store\\contact-us.js",
+      "file": "cypress\\e2e\\automation-test-store\\contact-us.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "54c89efa-a78a-4a63-8c7c-9f156261504a",
+          "title": "Test Contact Us page form via Automation test store",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Should be able to submit a successful submission via contact us form",
+              "fullTitle": "Test Contact Us page form via Automation test store Should be able to submit a successful submission via contact us form",
+              "timedOut": null,
+              "duration": 4716,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://automationteststore.com/\");\n// cy.get(\".info_links_footer a\").contains(\"Contact Us\").click();\n// alternative version>\n// cy.get(\n//   'a[href=\"https://automationteststore.com/index.php?rt=content/contact\"]'\n// ).click();\n// optimaized:\ncy.get('a[href$=\"contact\"]').click().then(function (linkText) {\n  console.log(`Headline of this link is following: ${linkText.text()}`);\n});\ncy.get(\"@user\").then(user => {\n  cy.get(\"#ContactUsFrm_first_name\").type(user.first_name);\n  cy.get(\"#ContactUsFrm_email\").type(user.email);\n});\ncy.get(\"#ContactUsFrm_email\").should(\"have.attr\", \"name\", \"email\");\ncy.get(\"#ContactUsFrm_enquiry\").type(\"Just some text message\");\n// xpath using unique ID:\n// x path using text and html element\n// cy.get(\"//a[text()='Contact Us']\").click();\n// cy.get(\".btn\").contains(\"Submit\").click();\n// alternative verion>\ncy.get('button[title = \"Submit\"]').click();\n// first assertion to verify if text message is correct:\ncy.get(\".contentpanel p:nth-child(3)\").should(\"have.text\", \"Your enquiry has been successfully sent to the store owner!\");",
+              "err": {},
+              "uuid": "6cb89605-ed47-4524-9c04-bef3bd313fde",
+              "parentUUID": "54c89efa-a78a-4a63-8c7c-9f156261504a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "6cb89605-ed47-4524-9c04-bef3bd313fde"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 4716,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

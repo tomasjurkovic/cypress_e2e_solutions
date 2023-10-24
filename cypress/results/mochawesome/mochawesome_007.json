@@ -1,0 +1,126 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-10-24T13:10:08.803Z",
+    "end": "2023-10-24T13:10:10.256Z",
+    "duration": 1453,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "a65d3410-1167-49a7-b162-5076fce524fc",
+      "title": "",
+      "fullFile": "cypress\\e2e\\webdriver-uni\\file-upload.js",
+      "file": "cypress\\e2e\\webdriver-uni\\file-upload.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4f7c5e0e-52d8-41cf-8034-c060f3b40e21",
+          "title": "Handling uploading files",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validate file upload",
+              "fullTitle": "Handling uploading files Validate file upload",
+              "timedOut": null,
+              "duration": 960,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(\"#myFile\").selectFile(\"cypress/fixtures/example.json\"); // providing real route to file\ncy.get(\"#submit-button\").click();\ncy.on(\"window:alert\", str => {\n  expect(str).to.include(\"Your file has now been uploaded!\");\n});",
+              "err": {},
+              "uuid": "611269ce-9cc6-4497-8e66-4d757fd32ea7",
+              "parentUUID": "4f7c5e0e-52d8-41cf-8034-c060f3b40e21",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate no file upload",
+              "fullTitle": "Handling uploading files Validate no file upload",
+              "timedOut": null,
+              "duration": 405,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// negative scenario when clicking on submit button before file is attached\ncy.get(\"#submit-button\").click();\ncy.on(\"window:alert\", str => {\n  expect(str).to.include(\"You need to select a file to upload!\");\n});",
+              "err": {},
+              "uuid": "4c190d3d-79dc-45c4-b458-8cfe0e65dfd3",
+              "parentUUID": "4f7c5e0e-52d8-41cf-8034-c060f3b40e21",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "611269ce-9cc6-4497-8e66-4d757fd32ea7",
+            "4c190d3d-79dc-45c4-b458-8cfe0e65dfd3"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1365,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

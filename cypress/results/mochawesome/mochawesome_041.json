@@ -1,0 +1,145 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-10-24T13:13:48.627Z",
+    "end": "2023-10-24T13:13:55.598Z",
+    "duration": 6971,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "63f27f23-7b80-41a5-9025-dba248bf5692",
+      "title": "",
+      "fullFile": "cypress\\e2e\\automation-test-store\\variables.js",
+      "file": "cypress\\e2e\\automation-test-store\\variables.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5b7c56fa-854e-4412-a96a-436703037272",
+          "title": "Verifying variables, cypress commands and jquerry commands",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Navigating to specific product pages",
+              "fullTitle": "Verifying variables, cypress commands and jquerry commands Navigating to specific product pages",
+              "timedOut": null,
+              "duration": 3033,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://automationteststore.com/\");\n// this will work:\n// const makeupLink = cy\n//   .get(\"a[href*='product/category&path=']\")\n//   .contains(\"Makeup\");\n// makeupLink.click();\n// const skincareLink = cy\n//   .get(\"a[href*='product/category&path=']\")\n//   .contains(\"Skincare\");\n//   skincareLink.click();\n// recommended approach:\ncy.get(\"a[href*='product/category&path=']\").contains(\"Makeup\").click();\ncy.get(\"a[href*='product/category&path=']\").contains(\"Skincare\").click();",
+              "err": {},
+              "uuid": "4e394b4b-977c-4b7e-bfde-77bf083031f2",
+              "parentUUID": "5b7c56fa-854e-4412-a96a-436703037272",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Navigating to specific product pages",
+              "fullTitle": "Verifying variables, cypress commands and jquerry commands Navigating to specific product pages",
+              "timedOut": null,
+              "duration": 1637,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://automationteststore.com/\");\ncy.get(\"a[href*='product/category&path=']\").contains(\"Makeup\").click().then($headerText => {\n  const headerText = $headerText.text().trim();\n  cy.log(`Found header text: ${headerText}`);\n  expect(headerText).is.eq(\"Makeup\");\n});",
+              "err": {},
+              "uuid": "90993c78-a4fb-43af-816e-39adf55b769b",
+              "parentUUID": "5b7c56fa-854e-4412-a96a-436703037272",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate correct text names",
+              "fullTitle": "Verifying variables, cypress commands and jquerry commands Validate correct text names",
+              "timedOut": null,
+              "duration": 400,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://automationteststore.com/index.php?rt=content/contact\");\n// Using cypress commans and chaining:\ncy.contains(\"#ContactUsFrm\", \"Contact Us Form\").find(\"#field_11\").should(\"contain\", \"First name\");\n// here I can check if it has specific ID and correct name in one placr:\n// inside of it I found specific ID of a DIV\n// and check that it contains 'First name' text label\n// Using JQuerry:\ncy.contains(\"#ContactUsFrm\", \"Contact Us Form\").then(text => {\n  const firstNameText = text.find(\"#field_11\").text();\n  expect(firstNameText).to.contain(\"First name\");\n  // Embedded commands (closures):\n  cy.get(\"#field_11\").then(fnText => {\n    cy.log(fnText.text());\n    cy.log(fnText);\n  });\n});",
+              "err": {},
+              "uuid": "cc946a2b-0f4a-4b15-a2ca-296d721f8c7d",
+              "parentUUID": "5b7c56fa-854e-4412-a96a-436703037272",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "4e394b4b-977c-4b7e-bfde-77bf083031f2",
+            "90993c78-a4fb-43af-816e-39adf55b769b",
+            "cc946a2b-0f4a-4b15-a2ca-296d721f8c7d"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5070,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

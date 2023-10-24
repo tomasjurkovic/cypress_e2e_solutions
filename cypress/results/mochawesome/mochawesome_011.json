@@ -1,0 +1,183 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-10-24T13:10:21.391Z",
+    "end": "2023-10-24T13:10:24.483Z",
+    "duration": 3092,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "b21ee20d-10bf-49f5-ae2d-b6bad1584adb",
+      "title": "",
+      "fullFile": "cypress\\e2e\\webdriver-uni\\mouse-actions.js",
+      "file": "cypress\\e2e\\webdriver-uni\\mouse-actions.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "92f82e80-ba50-4a52-8a69-0ac5bb1df149",
+          "title": "Handling mouse action",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Handling scrolling into view event",
+              "fullTitle": "Handling mouse action Handling scrolling into view event",
+              "timedOut": null,
+              "duration": 1182,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// this is the way how to scrollIntoView\ncy.get(\"#actions\").scrollIntoView();\n// using function for repeating step:t\noutsmartNewTabOpening(\"#actions\");",
+              "err": {},
+              "uuid": "b587227a-e43d-4b9c-b848-7b0a22a31846",
+              "parentUUID": "92f82e80-ba50-4a52-8a69-0ac5bb1df149",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "It should be able to drag and drop a dragable item",
+              "fullTitle": "Handling mouse action It should be able to drag and drop a dragable item",
+              "timedOut": null,
+              "duration": 464,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// using function for repeating step:t\noutsmartNewTabOpening(\"#actions\");\ncy.get(\"#draggable\").trigger(\"mousedown\", {\n  which: 1\n});\ncy.get(\"#droppable\").trigger(\"mousemove\").trigger(\"mouseup\", {\n  force: true\n});\ncy.get(\"#droppable\").invoke(\"text\").should(\"include\", \"Dropped!\");\ncy.get(\"#droppable p\").should(\"have.css\", \"background-color\").and(\"eq\", \"rgb(244, 89, 80)\");",
+              "err": {},
+              "uuid": "f7e1012c-693b-4004-b04b-d2b38ba74a64",
+              "parentUUID": "92f82e80-ba50-4a52-8a69-0ac5bb1df149",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "It should be able to perform doubleclick event",
+              "fullTitle": "Handling mouse action It should be able to perform doubleclick event",
+              "timedOut": null,
+              "duration": 436,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// using function for repeating step:t\noutsmartNewTabOpening(\"#actions\");\n// check first color:\ncy.get(\"#double-click\").should(\"have.css\", \"background-color\").and(\"eq\", \"rgb(254, 196, 45)\");\ncy.get(\"#double-click\").dblclick();\n// verify color-change after doubleclick:\ncy.get(\"#double-click\").should(\"have.css\", \"color\").and(\"eq\", \"rgb(0, 0, 0)\");\ncy.get(\"#double-click\").should(\"have.css\", \"background-color\").and(\"eq\", \"rgb(147, 203, 90)\");",
+              "err": {},
+              "uuid": "2bc50ac3-f2e4-4297-8a68-0f857dae339c",
+              "parentUUID": "92f82e80-ba50-4a52-8a69-0ac5bb1df149",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate holding a left mouse clickcbutton on a given element",
+              "fullTitle": "Handling mouse action Validate holding a left mouse clickcbutton on a given element",
+              "timedOut": null,
+              "duration": 339,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// using function for repeating step:t\noutsmartNewTabOpening(\"#actions\");\n// assertion before action: black color and differen text\ncy.get(\"#click-box\").should(\"have.css\", \"background-color\").and(\"eq\", \"rgb(0, 0, 0)\");\ncy.get(\"#click-box\").invoke(\"text\").should(\"include\", \"Click and Hold!\");\ncy.get(\"#click-box\").trigger(\"mousedown\", {\n  which: 1\n}).then($element => {\n  // validations for color and tex)t\n  expect($element).to.have.text(\"Well done! keep holding that click now.....\");\n  expect($element).to.have.css(\"background-color\", \"rgb(0, 255, 0)\");\n});",
+              "err": {},
+              "uuid": "a6bbd648-22ac-49e0-8c4c-1b716bfe7486",
+              "parentUUID": "92f82e80-ba50-4a52-8a69-0ac5bb1df149",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "It should be able to handle and verify hovering over element",
+              "fullTitle": "Handling mouse action It should be able to handle and verify hovering over element",
+              "timedOut": null,
+              "duration": 495,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// using function for repeating step:t\noutsmartNewTabOpening(\"#actions\");\ncy.get(\".dropdown\").find(\".dropbtn\").first().as(\"firstDropdown\");\ncy.get(\"@firstDropdown\").trigger(\"mousedown\", {\n  which: 1\n}).trigger(\"mouseover\", {\n  force: true\n}).click();\ncy.get(\".dropdown-content\").invoke(\"show\");\ncy.get(\".hover > .dropdown-content > .list-alert\").click();\n// Assert if correct message is displayed in alert window\ncy.on(\"window:alert\", str => {\n  // here it could be window:alert as well, but it has no chance to be false\n  expect(str).to.equal(\"Well done you clicked on the link!\");\n});",
+              "err": {},
+              "uuid": "38537a26-0fc4-4160-87ca-6abbe78e4a1a",
+              "parentUUID": "92f82e80-ba50-4a52-8a69-0ac5bb1df149",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "b587227a-e43d-4b9c-b848-7b0a22a31846",
+            "f7e1012c-693b-4004-b04b-d2b38ba74a64",
+            "2bc50ac3-f2e4-4297-8a68-0f857dae339c",
+            "a6bbd648-22ac-49e0-8c4c-1b716bfe7486",
+            "38537a26-0fc4-4160-87ca-6abbe78e4a1a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2916,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-10-24T13:10:04.913Z",
+    "end": "2023-10-24T13:10:07.284Z",
+    "duration": 2371,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "10456c06-897c-4620-905d-94843fc0fbdb",
+      "title": "",
+      "fullFile": "cypress\\e2e\\webdriver-uni\\dropdowns.js",
+      "file": "cypress\\e2e\\webdriver-uni\\dropdowns.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "636f48e5-4498-4a30-b3a3-5771049cd2b7",
+          "title": "Handling dropdowns",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Handle first dropdown",
+              "fullTitle": "Handling dropdowns Handle first dropdown",
+              "timedOut": null,
+              "duration": 985,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(\"#dropdowm-menu-1\").as(\"progLangDropdown\");\n// check default value:\ncy.get(\"@progLangDropdown\").should(\"have.value\", \"java\");\ncy.get(\"@progLangDropdown\").select(\"python\");\ncy.get(\"@progLangDropdown\").should(\"have.value\", \"python\");",
+              "err": {},
+              "uuid": "9d7175a2-bd70-476e-b12c-d57215fb7e5e",
+              "parentUUID": "636f48e5-4498-4a30-b3a3-5771049cd2b7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Handle second dropdown",
+              "fullTitle": "Handling dropdowns Handle second dropdown",
+              "timedOut": null,
+              "duration": 554,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(\"#dropdowm-menu-2\").as(\"secondDropdown\");\n// check default value:\ncy.get(\"@secondDropdown\").should(\"have.value\", \"eclipse\");\ncy.get(\"@secondDropdown\").select(\"testng\");\ncy.get(\"@secondDropdown\").should(\"have.value\", \"testng\");\n// chalenge: select by text\ncy.get(\"@secondDropdown\").select(\"JUnit\");\ncy.get(\"@secondDropdown\").should(\"have.value\", \"junit\");",
+              "err": {},
+              "uuid": "2d9a1cc5-9e86-4eed-8d7b-16f1a4903fbe",
+              "parentUUID": "636f48e5-4498-4a30-b3a3-5771049cd2b7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Handle third dropdown",
+              "fullTitle": "Handling dropdowns Handle third dropdown",
+              "timedOut": null,
+              "duration": 413,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(\"#dropdowm-menu-3\").as(\"thirdDropdown\");\n// check default value:\ncy.get(\"@thirdDropdown\").should(\"have.value\", \"html\");\ncy.get(\"@thirdDropdown\").select(\"javascript\");\ncy.get(\"@thirdDropdown\").should(\"have.value\", \"javascript\");",
+              "err": {},
+              "uuid": "5f12d302-6ac4-43ac-8462-3e1e13a7b8f0",
+              "parentUUID": "636f48e5-4498-4a30-b3a3-5771049cd2b7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate fourth dropdown has some disabled option",
+              "fullTitle": "Handling dropdowns Validate fourth dropdown has some disabled option",
+              "timedOut": null,
+              "duration": 283,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(\"#fruit-selects\").as(\"fruitsDropdown\");\n// check default value:\ncy.get(\"@fruitsDropdown\").should(\"have.value\", \"grape\");\n// check if Orange value is disable\ncy.get(\"@fruitsDropdown\").find('option[value=\"orange\"]').should(\"be.disabled\");\n// check if Pear value is enabled:\ncy.get(\"@fruitsDropdown\").find('option[value=\"pear\"]').should(\"be.enabled\");",
+              "err": {},
+              "uuid": "91a70b08-3b04-471e-811b-4953a287c63e",
+              "parentUUID": "636f48e5-4498-4a30-b3a3-5771049cd2b7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "9d7175a2-bd70-476e-b12c-d57215fb7e5e",
+            "2d9a1cc5-9e86-4eed-8d7b-16f1a4903fbe",
+            "5f12d302-6ac4-43ac-8462-3e1e13a7b8f0",
+            "91a70b08-3b04-471e-811b-4953a287c63e"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2235,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
