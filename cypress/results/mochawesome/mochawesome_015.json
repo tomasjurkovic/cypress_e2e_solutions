@@ -1,0 +1,107 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-10-24T13:10:42.371Z",
+    "end": "2023-10-24T13:10:45.430Z",
+    "duration": 3059,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8012da40-b062-4389-af29-979ca9937139",
+      "title": "",
+      "fullFile": "cypress\\e2e\\z1-getting-started\\selectors.js",
+      "file": "cypress\\e2e\\z1-getting-started\\selectors.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2f258c48-642b-4b08-a004-95529bf4c10a",
+          "title": "Selector examples",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Examples of Selectors via WebdriverUni Contact Us Page",
+              "fullTitle": "Selector examples Examples of Selectors via WebdriverUni Contact Us Page",
+              "timedOut": null,
+              "duration": 796,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"http://www.webdriveruniversity.com/Contact-Us/contactus.html\");\n//By tag name\ncy.get(\"input\");\n//By attribute name and value\ncy.get(\"input[name='first_name']\");\n//By id\ncy.get(\"#contact_me\");\n//By class\ncy.get(\".feedback-input\");\n//By multiple classes\ncy.get(\"[class='navbar navbar-inverse navbar-fixed-top']\");\n//By two different attributes\ncy.get(\"[name='email'][placeholder='Email Address']\");\n//By xpath\n// cy.xpath(\"//input[@name='first_name']\")",
+              "err": {},
+              "uuid": "f31ab641-292b-46dd-bea1-902e80962ab2",
+              "parentUUID": "2f258c48-642b-4b08-a004-95529bf4c10a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f31ab641-292b-46dd-bea1-902e80962ab2"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 796,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

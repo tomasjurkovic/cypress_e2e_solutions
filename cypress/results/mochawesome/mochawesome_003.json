@@ -1,0 +1,164 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-10-24T13:09:44.557Z",
+    "end": "2023-10-24T13:09:46.365Z",
+    "duration": 1808,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "fbacb951-aa5f-4948-bab7-7ab19f3726d9",
+      "title": "",
+      "fullFile": "cypress\\e2e\\webdriver-uni\\checkboxes.js",
+      "file": "cypress\\e2e\\webdriver-uni\\checkboxes.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f55aa3c0-c4a7-42ab-90a7-425ff71ca598",
+          "title": "Handling checkboxes",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Validate checking checkbox",
+              "fullTitle": "Handling checkboxes Validate checking checkbox",
+              "timedOut": null,
+              "duration": 629,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// with assertion as well\ncy.get(\"#checkboxes input[value='option-1']\").as(\"option1\");\ncy.get(\"@option1\").check();\ncy.get(\"@option1\").should(\"be.checked\");\n// or use this:\n//cy.get('#checkboxes > :nth-child(1) input')",
+              "err": {},
+              "uuid": "2b7ff9e8-2865-47b5-9afc-726ae4e062f8",
+              "parentUUID": "f55aa3c0-c4a7-42ab-90a7-425ff71ca598",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate unchecking checkbox",
+              "fullTitle": "Handling checkboxes Validate unchecking checkbox",
+              "timedOut": null,
+              "duration": 274,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// checkbox 3 is already chekced\ncy.get(\"#checkboxes input[value='option-3']\").as(\"option3\");\ncy.get(\"@option3\").uncheck();\ncy.get(\"@option3\").should(\"not.be.checked\");",
+              "err": {},
+              "uuid": "7ce21b15-d0bc-44f4-8417-1a46195a1b3f",
+              "parentUUID": "f55aa3c0-c4a7-42ab-90a7-425ff71ca598",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate checking multiple checkboxes at once",
+              "fullTitle": "Handling checkboxes Validate checking multiple checkboxes at once",
+              "timedOut": null,
+              "duration": 409,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// checkbox 3 is already chekced\ncy.get(\"#checkboxes input\").as(\"checkboxes\");\ncy.get(\"@checkboxes\").check();\ncy.get(\"@checkboxes\").should(\"be.checked\");",
+              "err": {},
+              "uuid": "1740b5c0-3086-4f0d-8f45-117dcbd75e68",
+              "parentUUID": "f55aa3c0-c4a7-42ab-90a7-425ff71ca598",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Validate that some checkboxes are checked and some not",
+              "fullTitle": "Handling checkboxes Validate that some checkboxes are checked and some not",
+              "timedOut": null,
+              "duration": 355,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "// checkbox 3 is already chekced\ncy.get(\"#checkboxes input\").check([\"option-2\", \"option-4\"]);\n// checking that 1. checkbox is not checked and all other are:\ncy.get(\"#checkboxes input[value='option-1']\").should(\"not.be.checked\");\ncy.get(\"#checkboxes input[value='option-2']\").should(\"be.checked\");\ncy.get(\"#checkboxes input[value='option-3']\").should(\"be.checked\");\ncy.get(\"#checkboxes input[value='option-4']\").should(\"be.checked\");",
+              "err": {},
+              "uuid": "b5eb52a3-db8b-48fa-a402-1395456dfe43",
+              "parentUUID": "f55aa3c0-c4a7-42ab-90a7-425ff71ca598",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2b7ff9e8-2865-47b5-9afc-726ae4e062f8",
+            "7ce21b15-d0bc-44f4-8417-1a46195a1b3f",
+            "1740b5c0-3086-4f0d-8f45-117dcbd75e68",
+            "b5eb52a3-db8b-48fa-a402-1395456dfe43"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 1667,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "id": "default",
+        "reportDir": "cypress/results/mochawesome",
+        "quite": true,
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
