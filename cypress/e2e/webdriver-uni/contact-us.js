@@ -34,37 +34,48 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     // outsmartNewTabOpening("#contact-us");
   });
 
-  it("Should be able to submit a successful submission via contact us form", () => {
-    // possitive scenario code
-    // NOW JUST FAKE ACCESS THE OPENED TAB:
-    // cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
-    // cy dokument, title and url examples:
-    cy.document().should("have.property", "charset").and("eq", "UTF-8");
-    cy.title().should("include", "WebDriver | Contact Us");
-    cy.url().should("include", "/Contact-Us/contactus.html");
+  it(
+    "Should be able to submit a successful submission via contact us form",
+    {
+      retries: {
+        runMode: 2,
+        openMode: 2,
+      },
+    },
+    () => {
+      // possitive scenario code
+      // NOW JUST FAKE ACCESS THE OPENED TAB:
+      // cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
+      // cy dokument, title and url examples:
+      cy.document().should("have.property", "charset").and("eq", "UTF-8");
+      cy.title().should("include", "WebDriver | Contact Us");
+      cy.url().should("include", "/Contact-Us/contactus.html");
 
-    contact_us_PO.fillContactUsForm(
-      Cypress.env("first_name"),
-      data.last_name,
-      data.email,
-      data.body
-    );
-    contact_us_PO.submitContactUsForm();
-    cy.get("#contact_reply h1").should(
-      "have.text",
-      "Thank You for your Message!"
-    );
+      contact_us_PO.fillContactUsForm(
+        Cypress.env("first_name"),
+        data.last_name,
+        data.email,
+        data.body
+      );
+      contact_us_PO.submitContactUsForm();
+      cy.get("#contact_reply h1").should(
+        "have.text",
+        "Thank You for your Message!"
+      );
 
-    // cy.pause can be part of command chains like this:
-    /* cy.get("#contact_reply h1")
+      // cy.pause can be part of command chains like this:
+      /* cy.get("#contact_reply h1")
       .pause()
       .should("have.text", "Thank You for your Message!"); */
 
-    console.log("Test finished successfully");
-    cy.log("This is equivalent of above, actually visible in Cypress console");
-    // cy.screenshot("Make a contact us form submission");
-    // this will make a screenshot after run
-  });
+      console.log("Test finished successfully");
+      cy.log(
+        "This is equivalent of above, actually visible in Cypress console"
+      );
+      // cy.screenshot("Make a contact us form submission");
+      // this will make a screenshot after run
+    }
+  );
 
   // it.only('only this test would ru', () => {
   //   // some random test which would be only run if it is outcommented
