@@ -2,6 +2,7 @@ const { outsmartNewTabOpening } = require("../../support/commands");
 
 describe("Handling checkboxes", () => {
   beforeEach(() => {
+    // cy.log(Cypress.env("name"));
     cy.navigateTo_WebDriverUni_Checkbox_Page();
   });
 
