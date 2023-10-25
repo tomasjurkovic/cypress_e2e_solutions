@@ -34,6 +34,10 @@ module.exports = defineConfig({
     viewportHeight: 1080,
     viewportWidth: 1920,
     // videoCompression: true,
+    retries: {
+      runMode: 0,
+      openMode: 1,
+    },
     // env. variables:
     env: {
       first_name: "Sarah",
