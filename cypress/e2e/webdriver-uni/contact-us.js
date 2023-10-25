@@ -43,7 +43,7 @@ describe("Test Contact Us page form viac webdriverUni", () => {
       },
     },
     () => {
-      // possitive scenario code
+      // possitive scenario code //
       // NOW JUST FAKE ACCESS THE OPENED TAB:
       // cy.visit("https://webdriveruniversity.com/Contact-Us/contactus.html");
       // cy dokument, title and url examples:
