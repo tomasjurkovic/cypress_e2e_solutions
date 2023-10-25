@@ -3,11 +3,7 @@ const fs = require("fs-extra");
 const path = require("path");
 
 function getConfigurationByFile(file) {
-  const pathToConfigFile = path.resolve(
-    "cypress\\config",
-    "config",
-    `${file}.json`
-  );
+  const pathToConfigFile = path.resolve("cypress\\config", `${file}.json`);
 
   if (!fs.existsSync(pathToConfigFile)) {
     console.log("No custom config file found.");
