@@ -22,6 +22,12 @@ describe("JSON object", () => {
         },
       ],
     };
+
+    const exampleArrayOfObjects = [
+      { key: "Luke" },
+      { key: "Granit" },
+      { key: "Fabio" },
+    ];
     // two options how to extract JSON objects
     cy.log(exampleObject.key, exampleObject.key2); // Tim, Jones
     cy.log(exampleObject["key"], exampleObject["key2"]); // Tim, Jones
@@ -33,5 +39,12 @@ describe("JSON object", () => {
     cy.log(users.lastName); // Blogs
     cy.log(users.students[1].lastName); // Parker
     cy.log(`${users.students[0].firstName} ${users.students[0].lastName}`); // Jim Blogs
+
+    // extracting all values from array of objects:
+    cy.log(
+      exampleArrayOfObjects[0].key,
+      exampleArrayOfObjects[1].key,
+      exampleArrayOfObjects[2].key
+    ); // prints Luke, Granit, Fabio
   });
 });
