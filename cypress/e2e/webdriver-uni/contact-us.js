@@ -114,6 +114,21 @@ describe("Test Contact Us page form viac webdriverUni", () => {
     );
   });
 
+  // example of skipping test in chrome
+  it("INFO: it wont run in Chrome", { browser: "!chrome" }, () => {
+    contact_us_PO.fillContactUsForm(
+      Cypress.env("first_name"),
+      data.last_name,
+      data.email,
+      data.body
+    );
+    contact_us_PO.submitContactUsForm();
+    cy.get("#contact_reply h1").should(
+      "have.text",
+      "Thank You for your Message!"
+    );
+  });
+
   it("Should not be able to submit a successful submission via contact us form ass all fields are required in one custom command", () => {
     // negative scenario code
     contact_us_PO.fillAndSubmitContactUsForm(
