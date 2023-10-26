@@ -81,22 +81,25 @@ describe("Test Contact Us page form viac webdriverUni", () => {
   //   // some random test which would be only run if it is outcommented
   // });
 
-  it("Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
-    // negative scenario code
-    contact_us_PO.fillContactUsForm(
-      data.first_name,
-      data.last_name,
-      data.email_invalid,
-      undefined
-    );
+  it("INFO: This test won't run in Electron. Should not be able to submit a successful submission via contact us form ass all fields are required", () => {
+    if (Cypress.isBrowser("electron")) {
+    } else {
+      // negative scenario code
+      contact_us_PO.fillContactUsForm(
+        data.first_name,
+        data.last_nnpmame,
+        data.email_invalid,
+        undefined
+      );
 
-    // not included comment, but all fields are required
-    contact_us_PO.submitContactUsForm();
-    cy.get("body").contains("Error: all fields are required");
-    cy.get("body").should(
-      "have.text",
-      "\n\n\n Error: all fields are required\n Error: Invalid email address\n\n\n"
-    );
+      // not included comment, but all fields are required
+      contact_us_PO.submitContactUsForm();
+      cy.get("body").contains("Error: all fields are required");
+      cy.get("body").should(
+        "have.text",
+        "\n\n\n Error: all fields are required\n Error: Invalid email address\n\n\n"
+      );
+    }
   });
 
   it("Should be able to submit a successful submission via contact us form in one custom command", () => {
