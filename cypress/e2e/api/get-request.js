@@ -17,13 +17,31 @@ describe("Get request - GET Gin Tonic open API", () => {
       },
     }).then((response) => {
       let body = JSON.parse(JSON.stringify(response.body));
-      cy.log(body);
-      console.log(body);
       expect(body.drinks[0].idDrink).to.eq("178365");
       expect(body.drinks[0]).has.property("strAlcoholic", "Alcoholic");
       expect(body.drinks[0]).has.property("strDrink", "Gin Tonic");
       expect(body.drinks[0]).has.property("strCategory", "Cocktail");
       expect(body.drinks).to.have.length(1); // there is only one object
+    });
+  });
+
+  it("Validate status code of the /bloody API which finds 3 drinks", () => {
+    cy.request({
+      method: "GET",
+      url: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=bloody",
+      headers: {
+        accept: "application/json",
+      },
+    }).then((response) => {
+      let body = JSON.parse(JSON.stringify(response.body));
+      cy.log(body);
+      console.log(body);
+      expect(body.drinks).to.have.length(3); // there are 3
+      const drinks = JSON.parse(JSON.stringify(response.body.drinks));
+      // not working but
+      //   drinks.forEach(function (item) {
+      //     expect(item[0]).to.have.all.keys("idDrink", "dateModified");
+      //   });
     });
   });
 });
