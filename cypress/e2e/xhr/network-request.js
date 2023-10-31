@@ -7,6 +7,13 @@ describe("Put Request", () => {
     });
 
     it("GET request", () => {
-        cy.click()
+        cy.intercept({
+            method: "GET",
+            url: "**/comments/*"
+        }).as("getComment");
+        // intercept GET comments API with wildcards that contains '/commnets/' in URL
+
+        cy.get(".network-btn").click();
+        cy.wait("@getComment").its("response.statusCode").should('eq', 200)
     });
 });
