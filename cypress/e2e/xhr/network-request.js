@@ -94,7 +94,7 @@ describe("XHR Requests", () => {
             },
             delay: 500
         }).as("putComment");
-        // intercept GET comments API with wildcards that contains '/commnets' in URL
+        // intercept GET comments API with wildcards that contains '/commnets' in URL;
 
         cy.get(".network-put").click();
         cy.wait("@putComment").its("response.statusCode").should('eq', 404);
